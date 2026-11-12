@@ -1,0 +1,1275 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Processo Penal I – Caderno da Maria Clara</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Nunito:wght@400;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+:root{
+ --rosa:#e0457b; --rosa-esc:#a8285a; --rosa-claro:#fde6ef; --rosa-med:#f7b8cf; --rosa-fundo:#fff6fa;
+ --tinta:#3b1d2b; --tinta2:#7a4a60; --branco:#fff; --ouro:#c9963b; --verde:#2f8f5b; --verm:#c0392b;
+ --sombra:0 6px 24px rgba(168,40,90,.12); --raio:16px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Nunito',system-ui,sans-serif;color:var(--tinta);background:var(--rosa-fundo);
+ background-image:radial-gradient(circle at 10% 0%,#ffe0ec 0,transparent 40%),radial-gradient(circle at 100% 30%,#ffeef5 0,transparent 35%);line-height:1.6}
+h1,h2,h3{font-family:'Playfair Display',serif;color:var(--rosa-esc)}
+a{color:var(--rosa-esc)}
+button{font-family:inherit}
+
+/* topo */
+header.top{position:sticky;top:0;z-index:50;background:rgba(255,246,250,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--rosa-med)}
+.topin{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;cursor:pointer}
+.brand svg{width:42px;height:42px}
+.brand b{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--rosa-esc);line-height:1.1}
+.brand small{display:block;font-size:.72rem;color:var(--tinta2);font-weight:700;letter-spacing:.04em}
+nav.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
+nav.tabs button{border:0;background:transparent;padding:8px 14px;border-radius:999px;font-weight:700;color:var(--tinta2);cursor:pointer;font-size:.92rem}
+nav.tabs button:hover{background:var(--rosa-claro)}
+nav.tabs button.on{background:var(--rosa);color:#fff;box-shadow:0 4px 12px rgba(224,69,123,.35)}
+
+main{max-width:1200px;margin:0 auto;padding:22px 16px 40px}
+.view{display:none}.view.on{display:block;animation:fade .35s}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* hero */
+.hero{background:linear-gradient(135deg,#e0457b,#f27aa6 55%,#f9b3cb);color:#fff;border-radius:24px;padding:34px 28px;position:relative;overflow:hidden;box-shadow:var(--sombra)}
+.hero h1{color:#fff;font-size:clamp(1.8rem,4vw,2.8rem);margin:0 0 6px}
+.hero p{margin:0;max-width:640px;font-size:1.05rem;opacity:.95}
+.hero .sp{position:absolute;right:-30px;top:-30px;width:220px;opacity:.18}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:18px 0}
+.stat{background:#fff;border-radius:var(--raio);padding:14px 16px;box-shadow:var(--sombra);border:1px solid var(--rosa-claro)}
+.stat b{display:block;font-size:1.6rem;color:var(--rosa);font-family:'Playfair Display',serif}
+.stat span{font-size:.85rem;color:var(--tinta2);font-weight:700}
+.grid-mods{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.modcard{background:#fff;border-radius:var(--raio);padding:18px;box-shadow:var(--sombra);cursor:pointer;border:2px solid transparent;transition:.2s;position:relative}
+.modcard:hover{border-color:var(--rosa-med);transform:translateY(-3px)}
+.modcard .n{font-family:'Playfair Display',serif;font-size:2rem;color:var(--rosa-med);line-height:1}
+.modcard h3{margin:6px 0 4px;font-size:1.1rem}
+.modcard p{margin:0;font-size:.88rem;color:var(--tinta2)}
+.modcard .done{position:absolute;top:12px;right:14px;font-size:.75rem;font-weight:800;color:var(--verde)}
+.bar{height:8px;background:var(--rosa-claro);border-radius:9px;overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--rosa),#f39bbd);width:0;transition:.4s}
+
+/* matéria */
+.study{display:grid;grid-template-columns:260px 1fr;gap:20px;align-items:start}
+.side{position:sticky;top:84px;background:#fff;border-radius:var(--raio);padding:14px;box-shadow:var(--sombra);max-height:calc(100vh - 110px);overflow:auto}
+.side h4{margin:4px 6px 8px;font-family:'Playfair Display',serif;color:var(--rosa-esc)}
+.side button.m{display:block;width:100%;text-align:left;border:0;background:transparent;padding:9px 10px;border-radius:10px;font-weight:800;color:var(--tinta);cursor:pointer}
+.side button.m.on{background:var(--rosa-claro);color:var(--rosa-esc)}
+.side .subs a{display:block;font-size:.82rem;padding:4px 10px 4px 20px;color:var(--tinta2);text-decoration:none;border-left:2px solid var(--rosa-claro);margin-left:10px}
+.side .subs a:hover{color:var(--rosa);border-color:var(--rosa)}
+.paper{background:#fff;border-radius:var(--raio);padding:28px clamp(16px,4vw,40px);box-shadow:var(--sombra);
+ background-image:linear-gradient(transparent 31px,#fde9f1 32px);background-size:100% 32px;border-left:6px solid var(--rosa-med)}
+.paper h2{font-size:1.9rem;margin:0 0 10px;background:var(--rosa);color:#fff;padding:10px 16px;border-radius:12px;display:inline-block}
+.paper h3{font-size:1.3rem;margin:26px 0 8px;padding-bottom:4px;border-bottom:2px dashed var(--rosa-med);scroll-margin-top:90px}
+.paper h4{color:var(--rosa);margin:18px 0 6px;font-size:1.05rem}
+.paper p,.paper li{font-size:1rem}
+.paper ul,.paper ol{padding-left:22px}
+.paper li{margin:4px 0}
+table{width:100%;border-collapse:separate;border-spacing:0;margin:12px 0;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(168,40,90,.08);font-size:.92rem}
+th{background:var(--rosa-med);color:var(--rosa-esc);text-align:left;padding:9px 10px;font-weight:800}
+td{padding:9px 10px;border-top:1px solid var(--rosa-claro);vertical-align:top}
+tr:nth-child(even) td{background:#fff8fb}
+.tw{overflow-x:auto}
+.box{border-radius:12px;padding:12px 14px;margin:12px 0;border-left:5px solid;font-size:.95rem;position:relative}
+.box::before{display:block;font-weight:900;font-size:.72rem;letter-spacing:.08em;margin-bottom:3px}
+.box.obs{background:#fdeff5;border-color:var(--rosa)}.box.obs::before{content:"OBSERVAÇÃO";color:var(--rosa)}
+.box.conc{background:#fff4f8;border-color:#d16a93}.box.conc::before{content:"CONCLUSÃO";color:#b0476f}
+.box.adv{background:#ffe3ee;border-color:var(--rosa-esc)}.box.adv::before{content:"⚠ ATENÇÃO";color:var(--rosa-esc)}
+.box.ent{background:#fff;border-color:var(--rosa-med);border-style:solid dashed solid solid}.box.ent::before{content:"✿ ENTENDA";color:var(--rosa)}
+.box.ex{background:#fff;border-color:var(--ouro)}.box.ex::before{content:"EXEMPLO";color:var(--ouro)}
+.box.prova{background:linear-gradient(135deg,#fff3c4,#ffe3ef);border:2px solid var(--rosa);border-left-width:6px}.box.prova::before{content:"★ CAI NA PROVA";color:var(--rosa-esc)}
+.mac{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:10px 0 18px}
+.mc{background:linear-gradient(160deg,#fff,#ffeaf2);border:2px solid var(--rosa-med);border-radius:16px;padding:14px 16px;break-inside:avoid}
+.mc .mt{display:inline-block;background:var(--rosa);color:#fff;font-weight:900;border-radius:999px;padding:2px 14px;font-size:.85rem;letter-spacing:.05em}
+.mc .fr{font-family:'Playfair Display',serif;font-style:italic;font-size:1.12rem;color:var(--rosa-esc);margin:8px 0 6px;line-height:1.35}
+.mc .fr b{color:var(--rosa);font-size:1.25em}
+.mc ul{margin:0;padding-left:18px}.mc li{font-size:.9rem;margin:2px 0}
+.mc .lx{margin:8px 0 0;font-size:.84rem;font-weight:800;color:var(--rosa-esc)}
+a.lei{background:var(--rosa-claro);border-radius:6px;padding:0 5px;text-decoration:none;font-weight:700;border-bottom:2px dotted var(--rosa);cursor:pointer;white-space:nowrap}
+a.lei:hover{background:var(--rosa-med)}
+.modnav{display:flex;justify-content:space-between;gap:10px;margin-top:26px;flex-wrap:wrap}
+.btn{border:0;border-radius:999px;padding:10px 18px;font-weight:800;cursor:pointer;background:var(--rosa);color:#fff;box-shadow:0 4px 12px rgba(224,69,123,.3)}
+.btn.sec{background:#fff;color:var(--rosa-esc);border:2px solid var(--rosa-med);box-shadow:none}
+.btn:disabled{opacity:.4;cursor:default}
+.btn.ok{background:var(--verde)}
+
+/* caderno completo */
+.cad-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.cad-index{background:#fff;border-radius:var(--raio);padding:16px 20px;box-shadow:var(--sombra);margin-bottom:16px;columns:2;column-gap:30px}
+.cad-index a{display:block;text-decoration:none;font-size:.9rem;padding:2px 0;break-inside:avoid}
+.cad-index a.mh{font-weight:900;color:var(--rosa);margin-top:6px}
+#cad .mod{margin-bottom:24px}
+
+/* leis */
+.lawtools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.lawtools input{flex:1;min-width:220px;padding:11px 14px;border-radius:999px;border:2px solid var(--rosa-med);font-family:inherit;font-size:1rem;outline:none}
+.lawtools input:focus{border-color:var(--rosa)}
+.chip{border:2px solid var(--rosa-med);background:#fff;color:var(--rosa-esc);border-radius:999px;padding:7px 14px;font-weight:800;cursor:pointer}
+.chip.on{background:var(--rosa);border-color:var(--rosa);color:#fff}
+.lawlist{display:grid;gap:12px}
+.law{background:#fff;border-radius:var(--raio);box-shadow:var(--sombra);overflow:hidden}
+.law summary{cursor:pointer;padding:13px 16px;font-weight:800;color:var(--rosa-esc);list-style:none;display:flex;justify-content:space-between;gap:10px}
+.law summary::-webkit-details-marker{display:none}
+.law summary span{font-size:.75rem;background:var(--rosa-claro);padding:2px 9px;border-radius:999px;color:var(--rosa);white-space:nowrap}
+.law .tx{padding:0 18px 14px;white-space:pre-line;font-size:.95rem;border-top:1px dashed var(--rosa-med);padding-top:10px}
+.nota{margin-top:10px;background:#fff7e6;border-left:4px solid var(--ouro);padding:8px 10px;border-radius:8px;font-size:.86rem;white-space:normal}
+
+/* flashcards */
+.fc-wrap{display:flex;flex-direction:column;align-items:center;gap:14px}
+.fc-filter{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.card3d{width:min(560px,100%);height:300px;perspective:1200px;cursor:pointer}
+.card3d .in{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.card3d.flip .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:22px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:26px;box-shadow:var(--sombra)}
+.face.f{background:#fff;border:3px solid var(--rosa-med)}
+.face.b{background:linear-gradient(135deg,var(--rosa),#f38db1);color:#fff;transform:rotateY(180deg)}
+.face .tag{position:absolute;top:14px;left:18px;font-size:.72rem;font-weight:900;letter-spacing:.08em;color:var(--rosa)}
+.face.b .tag{color:#ffe1ec}
+.face q{quotes:none;font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--rosa-esc)}
+.face.b div{font-size:1.08rem;font-weight:600}
+.face .hint{position:absolute;bottom:12px;font-size:.78rem;color:var(--tinta2)}
+.face.b .hint{color:#ffe1ec}
+.fc-ctrl{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.fc-count{font-weight:800;color:var(--tinta2)}
+
+/* questões */
+.qtabs{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.q{background:#fff;border-radius:var(--raio);padding:18px 20px;box-shadow:var(--sombra);margin-bottom:14px}
+.q .qh{font-size:.75rem;font-weight:900;color:var(--rosa);letter-spacing:.06em}
+.q p.en{font-weight:700;margin:6px 0 10px}
+.opt{display:block;width:100%;text-align:left;border:2px solid var(--rosa-claro);background:#fff;border-radius:12px;padding:10px 12px;margin:6px 0;cursor:pointer;font-size:.96rem;color:var(--tinta)}
+.opt:hover{border-color:var(--rosa-med)}
+.opt.cert{border-color:var(--verde);background:#eaf7ef}
+.opt.err{border-color:var(--verm);background:#fdecea}
+.fb{display:none;margin-top:8px;padding:10px 12px;border-radius:10px;background:var(--rosa-claro);font-size:.92rem}
+.fb.on{display:block}
+.score{position:sticky;top:76px;z-index:5;background:#fff;border:2px solid var(--rosa-med);border-radius:999px;padding:8px 16px;font-weight:800;color:var(--rosa-esc);display:inline-block;margin-bottom:12px}
+textarea{width:100%;min-height:110px;border:2px solid var(--rosa-claro);border-radius:12px;padding:10px;font-family:inherit;font-size:.95rem;resize:vertical;outline:none}
+textarea:focus{border-color:var(--rosa-med)}
+.gab{display:none;margin-top:10px;background:#fff8fb;border:2px dashed var(--rosa-med);border-radius:12px;padding:12px}
+.gab.on{display:block}
+
+/* modal */
+.modal{position:fixed;inset:0;background:rgba(59,29,43,.45);display:none;align-items:center;justify-content:center;z-index:100;padding:16px}
+.modal.on{display:flex}
+.modal .mbox{background:#fff;border-radius:20px;max-width:640px;width:100%;max-height:85vh;overflow:auto;box-shadow:0 20px 50px rgba(0,0,0,.25);border-top:8px solid var(--rosa)}
+.modal .mh{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--rosa-claro);position:sticky;top:0;background:#fff}
+.modal .mh b{font-family:'Playfair Display',serif;color:var(--rosa-esc);font-size:1.15rem}
+.modal .x{border:0;background:var(--rosa-claro);color:var(--rosa-esc);width:34px;height:34px;border-radius:50%;font-size:1.2rem;cursor:pointer}
+.modal .mt{padding:14px 20px 20px;white-space:pre-line}
+
+/* rodapé logo */
+footer{margin-top:40px;background:linear-gradient(180deg,transparent,#ffe0ec);padding:40px 16px 30px;text-align:center}
+.sig{display:inline-flex;flex-direction:column;align-items:center;gap:6px}
+.sig svg{width:150px;height:150px;filter:drop-shadow(0 8px 18px rgba(168,40,90,.25))}
+.sig .nm{font-family:'Great Vibes',cursive;font-size:clamp(2rem,6vw,3rem);color:var(--rosa-esc);line-height:1.1}
+.sig .sb{font-weight:800;letter-spacing:.25em;font-size:.72rem;color:var(--tinta2);text-transform:uppercase}
+.disc{max-width:760px;margin:16px auto 0;font-size:.8rem;color:var(--tinta2)}
+
+@media (max-width:860px){
+ .study{grid-template-columns:1fr}
+ .side{position:static;max-height:none}
+ .cad-index{columns:1}
+ .mac{grid-template-columns:1fr}
+ nav.tabs{margin-left:0;width:100%;overflow-x:auto;flex-wrap:nowrap}
+ nav.tabs button{white-space:nowrap}
+ .card3d{height:340px}
+}
+@media print{
+ header.top,footer .disc,.cad-head .btn,nav,.side,.modnav{display:none!important}
+ body{background:#fff}
+ .view{display:none!important}#v-cad{display:block!important}
+ .paper{box-shadow:none;background-image:none}
+ .box,table,tr{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+ <defs>
+  <linearGradient id="gR" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f27aa6"/><stop offset="1" stop-color="#a8285a"/></linearGradient>
+  <linearGradient id="gO" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3d27a"/><stop offset="1" stop-color="#c9963b"/></linearGradient>
+  <symbol id="logo" viewBox="0 0 200 200">
+   <circle cx="100" cy="100" r="96" fill="url(#gR)"/>
+   <circle cx="100" cy="100" r="86" fill="none" stroke="url(#gO)" stroke-width="2.5"/>
+   <circle cx="100" cy="100" r="80" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="1" stroke-dasharray="2 5"/>
+   <!-- louros -->
+   <g fill="url(#gO)">
+    <path d="M52 150c-14-14-20-34-16-56 3 18 10 34 22 46z"/><ellipse cx="40" cy="118" rx="9" ry="4" transform="rotate(-60 40 118)"/><ellipse cx="44" cy="133" rx="9" ry="4" transform="rotate(-40 44 133)"/><ellipse cx="38" cy="102" rx="9" ry="4" transform="rotate(-80 38 102)"/><ellipse cx="53" cy="145" rx="9" ry="4" transform="rotate(-20 53 145)"/>
+    <path d="M148 150c14-14 20-34 16-56-3 18-10 34-22 46z"/><ellipse cx="160" cy="118" rx="9" ry="4" transform="rotate(60 160 118)"/><ellipse cx="156" cy="133" rx="9" ry="4" transform="rotate(40 156 133)"/><ellipse cx="162" cy="102" rx="9" ry="4" transform="rotate(80 162 102)"/><ellipse cx="147" cy="145" rx="9" ry="4" transform="rotate(20 147 145)"/>
+   </g>
+   <!-- balança -->
+   <g stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round">
+    <line x1="100" y1="38" x2="100" y2="66"/><line x1="76" y1="46" x2="124" y2="46"/>
+    <path d="M76 46l-8 14h16z"/><path d="M124 46l-8 14h16z"/>
+   </g>
+   <circle cx="100" cy="36" r="4" fill="#fff"/>
+   <text x="100" y="128" text-anchor="middle" font-family="'Great Vibes',cursive" font-size="66" fill="#fff">MC</text>
+   <text x="100" y="158" text-anchor="middle" font-family="Nunito,sans-serif" font-weight="800" font-size="10" letter-spacing="3" fill="#fff" fill-opacity=".9">O · D · C</text>
+   <!-- coração -->
+   <path d="M100 176c-6-5-12-9-12-14a5 5 0 0 1 12-2a5 5 0 0 1 12 2c0 5-6 9-12 14z" fill="url(#gO)"/>
+  </symbol>
+ </defs>
+</svg>
+
+<header class="top"><div class="topin">
+ <div class="brand" onclick="go('inicio')"><svg><use href="#logo"/></svg><div><b>Processo Penal I</b></div></div>
+ <nav class="tabs" id="tabs">
+  <button data-v="inicio" class="on">Início</button>
+  <button data-v="materia">Matéria</button>
+  <button data-v="cad">Caderno completo</button>
+  <button data-v="leis">Leis e Súmulas</button>
+  <button data-v="flash">Flashcards</button>
+  <button data-v="quest">Questões</button>
+ </nav>
+</div></header>
+
+<main>
+<!-- INÍCIO -->
+<section class="view on" id="v-inicio">
+ <div class="hero">
+  <svg class="sp"><use href="#logo"/></svg>
+  <h1>Processo Penal I ✿</h1>
+  <p>1ª unidade com o Prof. Nestor Távora: dos fundamentos até a perpetuação da jurisdição. Estude a matéria, leia os artigos e súmulas completos, revise com flashcards e treine com questões.</p>
+ </div>
+ <div class="stats">
+  <div class="stat"><b id="st-mod">0/5</b><span>módulos estudados</span></div>
+  <div class="stat"><b id="st-fc">0</b><span>flashcards dominados</span></div>
+  <div class="stat"><b id="st-q">0%</b><span>acertos nas objetivas</span></div>
+  <div class="stat"><b id="st-l">0</b><span>artigos e súmulas</span></div>
+ </div>
+ <h2 style="margin:22px 0 10px">Mapa da unidade</h2>
+ <div class="grid-mods" id="gridmods"></div>
+ <div class="box obs" style="margin-top:20px">Toque em qualquer <a class="lei" onclick="return false">art. destacado</a> no texto para ler o artigo ou a súmula na íntegra, sem sair da página.</div>
+</section>
+
+<!-- MATÉRIA -->
+<section class="view" id="v-materia">
+ <div class="study">
+  <aside class="side" id="side"></aside>
+  <div>
+   <div class="paper" id="paper"></div>
+   <div class="modnav"><button class="btn sec" id="prev">← Anterior</button><button class="btn" id="mark">✓ Marcar como estudado</button><button class="btn sec" id="next">Próximo →</button></div>
+  </div>
+ </div>
+</section>
+
+<!-- CADERNO COMPLETO -->
+<section class="view" id="v-cad">
+ <div class="cad-head"><h2 style="margin:0">Caderno completo · Processo Penal I</h2><button class="btn" onclick="window.print()">🖨 Imprimir / salvar PDF</button></div>
+ <div class="cad-index" id="cadidx"></div>
+ <div class="paper" id="cad"></div>
+</section>
+
+<!-- LEIS -->
+<section class="view" id="v-leis">
+ <h2 style="margin-top:0">Leis e Súmulas na íntegra</h2>
+ <div class="lawtools"><input id="lawq" placeholder="Buscar: art. 28, decadência, júri, Súmula 704…"></div>
+ <div class="lawtools" id="lawchips"></div>
+ <div class="lawlist" id="lawlist"></div>
+</section>
+
+<!-- FLASHCARDS -->
+<section class="view" id="v-flash">
+ <h2 style="margin-top:0;text-align:center">Flashcards</h2>
+ <div class="fc-wrap">
+  <div class="fc-filter" id="fcf"></div>
+  <div class="fc-count" id="fcn"></div>
+  <div class="card3d" id="card"><div class="in">
+   <div class="face f"><span class="tag" id="fct"></span><q id="fcq"></q><span class="hint">toque para virar</span></div>
+   <div class="face b"><span class="tag">RESPOSTA</span><div id="fca"></div><span class="hint">toque para voltar</span></div>
+  </div></div>
+  <div class="fc-ctrl">
+   <button class="btn sec" id="fcprev">←</button>
+   <button class="btn sec" id="fcno">Ainda não sei</button>
+   <button class="btn ok" id="fcyes">Já sei ✓</button>
+   <button class="btn sec" id="fcnext">→</button>
+  </div>
+  <button class="chip" id="fcshuf">🔀 Embaralhar</button>
+ </div>
+</section>
+
+<!-- QUESTÕES -->
+<section class="view" id="v-quest">
+ <h2 style="margin-top:0">Questões</h2>
+ <div class="qtabs"><button class="chip on" data-q="obj">Objetivas</button><button class="chip" data-q="disc">Casos práticos (discursivas)</button></div>
+ <div class="qtabs" id="qf"></div>
+ <div id="qobj"><div class="score" id="score">0 de 0 respondidas</div><div id="qlist"></div><button class="btn sec" id="qreset">↺ Recomeçar</button></div>
+ <div id="qdisc" style="display:none"></div>
+</section>
+</main>
+
+<div class="modal" id="modal"><div class="mbox"><div class="mh"><b id="mt"></b><button class="x" onclick="closeM()">×</button></div><div class="mt" id="mx"></div></div></div>
+
+<footer>
+ <div class="sig">
+  <svg><use href="#logo"/></svg>
+  <div class="nm">Maria Clara Oliveira da Cruz</div>
+  <div class="sb">Direito · Processo Penal I · 2026.2</div>
+ </div>
+ <p class="disc">Material de estudo organizado a partir das aulas e do caderno do Prof. Nestor Távora. Os textos de lei seguem a redação vigente conhecida até 2026; antes da prova, confira eventuais alterações no site do Planalto.</p>
+</footer>
+
+<template id="content">
+<!-- ===================== MÓDULO 0 ===================== -->
+<article class="mod" id="m0" data-title="Fundamentos do Processo Penal" data-short="Fundamentos">
+<h2>Fundamentos do Direito Processual Penal</h2>
+
+<h3 id="m0-1">1. Função do Direito Processual Penal</h3>
+<p>O <b>Direito Penal</b> define crimes e estabelece sanções. O <b>Direito Processual Penal</b> fornece ao Estado os instrumentos necessários para <b>investigar</b> a infração, <b>processar</b> o suposto autor, <b>julgá-lo</b> e, quando cabível, <b>executar</b> a sanção.</p>
+<div class="box conc"><b>Definição central:</b> o Direito Processual Penal é o conjunto de princípios e normas que organiza a <b>persecução penal</b>.</div>
+<p>A matéria possui lógica própria e não deve ser tratada como simples reprodução do processo civil. O CPC pode auxiliar na solução de lacunas, mas <b>somente quando o processo penal não tiver disciplina específica</b> para a matéria.</p>
+
+<h4>1.1 Persecução penal</h4>
+<p>Significa perseguição ou apuração do crime. Desenvolve-se em <b>duas etapas distintas e sucessivas</b>:</p>
+<table><tr><th>Etapa</th><th>Conteúdo</th><th>Finalidade imediata</th></tr>
+<tr><td>Investigação</td><td>Principal instrumento: inquérito policial</td><td>Apurar autoria, materialidade e circunstâncias da infração</td></tr>
+<tr><td>Processo</td><td>Desenvolve-se perante o Poder Judiciário</td><td>Julgar a pretensão acusatória formulada contra o suposto autor</td></tr></table>
+<div class="box ent">A investigação reúne informações sobre o fato; o processo é a etapa em que a acusação é submetida ao contraditório, à defesa e ao julgamento.</div>
+
+<h3 id="m0-2">2. Lei processual penal no ESPAÇO ([[cpp1|art. 1º, CPP]])</h3>
+<p>No território brasileiro aplica-se a legislação processual brasileira. A jurisdição é manifestação da <b>soberania estatal</b>; por isso, uma autoridade brasileira não aplica diploma processual estrangeiro para praticar atos jurisdicionais no Brasil.</p>
+<div class="box conc"><b>Regra-chave:</b> o Brasil adota o princípio da <b>territorialidade absoluta</b> da lei processual penal.</div>
+<p>Mesmo quando o Brasil cumpre uma <b>carta rogatória</b> (instrumento de cooperação jurídica internacional, usado por um juiz para pedir a uma autoridade judicial de outro país a realização de um ato processual), o ato é praticado conforme a legislação processual <b>brasileira</b>. Não se importa o procedimento estrangeiro.</p>
+<h4>2.1 Como compreender as ressalvas do art. 1º</h4>
+<p>As situações do art. 1º <b>não</b> representam aplicação de lei processual estrangeira. São hipóteses em que o próprio CPP deixa de ser o diploma aplicável, embora continue incidindo legislação brasileira.</p>
+<table><tr><th>Situação</th><th>Regra aplicável</th></tr>
+<tr><td>Crime militar praticado por policial militar</td><td>Pode ser aplicado o Código de Processo Penal Militar</td></tr>
+<tr><td>Carta rogatória estrangeira cumprida no Brasil</td><td>O ato é realizado segundo a lei processual brasileira</td></tr></table>
+<div class="box conc">As exceções são ao <b>uso do CPP</b>, e não ao princípio de que somente a legislação processual brasileira é aplicada no território nacional.</div>
+
+<h3 id="m0-3">3. Lei processual penal no TEMPO ([[cpp2|art. 2º, CPP]])</h3>
+<p>A lei processual penal nova tem <b>aplicação imediata</b>, seja mais benéfica ou mais prejudicial ao investigado ou acusado. Essa lógica é diferente da regra penal material de retroatividade da lei mais benéfica.</p>
+<h4>3.1 Princípio <i>tempus regit actum</i></h4>
+<p>Cada ato processual é regido pela lei vigente no momento de sua prática. Se uma lei nova entra em vigor durante o processo, ela rege os <b>atos futuros</b>; os atos anteriores permanecem válidos.</p>
+<h4>3.2 Lei que rege o recurso</h4>
+<p>Considera-se a lei vigente no momento em que surge a pretensão de recorrer, isto é, <b>quando a decisão é proferida</b>. A alteração posterior do prazo recursal não modifica o regime da decisão já publicada.</p>
+<h4>3.3 Lei híbrida</h4>
+<p>É o diploma que reúne normas de Direito Penal (material) e de Direito Processual Penal. Para definir sua incidência, deve-se observar <b>primeiro o conteúdo penal</b>.</p>
+<table><tr><th>Parte penal</th><th>Consequência penal</th><th>Consequência processual</th></tr>
+<tr><td>Benéfica</td><td>Retroage para beneficiar o acusado</td><td>A parte processual é aplicada imediatamente</td></tr>
+<tr><td>Maléfica</td><td>Não retroage</td><td>A parte processual também não é aplicada à persecução daquele crime anterior: todo o processo será regido pelos preceitos processuais da lei antiga</td></tr></table>
+<div class="box prova">Lei híbrida com parte penal <b>maléfica</b>: nada dela se aplica ao crime anterior, nem a parte processual.</div>
+
+<h3 id="m0-4">4. Interpretação da lei processual ([[cpp3|art. 3º, CPP]])</h3>
+<p>O art. 3º do CPP admite <b>interpretação extensiva</b>, <b>aplicação analógica</b> e uso dos <b>princípios gerais do direito</b>.</p>
+
+<h3 id="m0-5">5. Sistemas processuais penais</h3>
+<p>A identificação do sistema depende principalmente da <b>distribuição das funções</b> de acusar, defender e julgar e do comportamento do magistrado na produção da prova.</p>
+<table><tr><th>Sistema</th><th>Funções</th><th>Provas</th><th>Característica central</th></tr>
+<tr><td>Inquisitório</td><td>Concentradas em uma autoridade</td><td>Há hierarquia; a confissão ocupa posição privilegiada</td><td>Aglutinação de poder</td></tr>
+<tr><td>Acusatório</td><td>Acusação, defesa e julgamento separados</td><td>Sem hierarquia abstrata (concepção horizontalizada)</td><td>Separação de funções e imparcialidade</td></tr>
+<tr><td>Misto</td><td>Fase preliminar e fase processual conduzidas judicialmente por magistrados distintos</td><td>Não aprofundado em aula</td><td>Combinação de duas fases judiciais</td></tr></table>
+<p>O CPP afirma expressamente a estrutura acusatória ([[cpp3a|art. 3º-A, CPP]]).</p>
+
+<h3 id="m0-6">6. Juiz das garantias</h3>
+<p><b>Conceito:</b> é o magistrado que delibera <b>durante a investigação</b> e que, em princípio, <b>não presidirá o futuro processo</b> (arts. 3º-A a 3º-F, CPP — [[cpp3b|art. 3º-B]]).</p>
+<p>Controla a legalidade da investigação, protege direitos individuais e decide medidas sujeitas à reserva de jurisdição, <b>mas não investiga</b>.</p>
+</article>
+
+<!-- ===================== MÓDULO 1 ===================== -->
+<article class="mod" id="m1" data-title="Inquérito Policial" data-short="Inquérito Policial">
+<h2>Inquérito Policial (IP)</h2>
+
+<h3 id="m1-1">1. Base normativa e papel da polícia</h3>
+<p>O estudo do IP concentra-se nos <b>arts. 4º a 23 do CPP</b> ([[cpp4|art. 4º]]) e deve ser relacionado ao [[cf144|art. 144 da CF]].</p>
+<h4>1.1 Polícia administrativa ou ostensiva</h4>
+<p>Atua predominantemente na <b>prevenção</b> e na preservação da ordem pública. Exemplos: Polícia Militar, polícias rodoviária e ferroviária e, no contexto dos presídios, a Polícia Penal.</p>
+<h4>1.2 Polícia judiciária</h4>
+<p>Exerce função predominantemente <b>investigativa</b>, atuando, em regra, <b>após</b> a ocorrência da infração, para reunir elementos sobre autoria e materialidade. No âmbito estadual: <b>Polícia Civil</b>; no federal: <b>Polícia Federal</b>, dentro de suas atribuições.</p>
+<table><tr><th>Aspecto</th><th>Síntese</th></tr>
+<tr><td>Estrutura</td><td>Delegados de carreira, concursados e bacharéis em Direito</td></tr>
+<tr><td>Função</td><td>Investigar infrações, auxiliar a Justiça e elaborar o IP</td></tr>
+<tr><td>Vinculação</td><td>Integra o Poder Executivo, e não o Judiciário</td></tr>
+<tr><td>Presidência do IP</td><td>Autoridade policial, em regra o delegado</td></tr></table>
+<div class="box adv">"Polícia Judiciária" descreve a função de auxílio à persecução e à Justiça; <b>não</b> significa subordinação administrativa ao Poder Judiciário.</div>
+
+<h3 id="m1-2">2. Conceito e finalidade do IP</h3>
+<ul>
+<li><b>a) Procedimento administrativo preliminar</b> — não é processo judicial e não possui partes em sentido processual.</li>
+<li><b>b) De caráter informativo</b> — reúne elementos para orientar o titular da ação penal e decisões cautelares.</li>
+<li><b>c) Presidido pela autoridade policial</b> (delegado), que organiza e dirige as diligências.</li>
+<li><b>d) Com prazos.</b></li>
+<li><b>e) Objetivo:</b> apurar a <b>autoria</b> (quem concorreu para o delito), a <b>materialidade</b> (sinônimo de existência do delito) e as <b>circunstâncias</b> da infração.</li>
+<li><b>f) Finalidade:</b> contribuir na formação da opinião delitiva do titular da ação penal — a <b><i>opinio delicti</i></b>.</li>
+</ul>
+<div class="box obs">Quando o crime deixa vestígios, sua existência é demonstrada por <b>exame de corpo de delito</b> ([[cpp158|art. 158, CPP]]) — nome da perícia sobre qualquer vestígio deixado pelo crime. <i>Ex.: poça de sangue, pegada, documento fraudado.</i></div>
+<div class="box ent">Em regra, o MP examina os elementos e decide se há fundamento para a ação penal pública. O IP funciona como <b>filtro</b>: permite processar quem possivelmente concorreu para o crime e evita que pessoas sem lastro indiciário sejam levadas ao polo passivo.</div>
+<p>O IP também fornece <b>justa causa</b> (lastro indiciário) para que o juiz avalie <b>medidas cautelares</b>. <i>Ex.: prisão cautelar, tornozeleira eletrônica, medidas protetivas de urgência.</i></p>
+<h4>2.1 Natureza jurídica</h4>
+<div class="box conc">O IP tem natureza de <b>procedimento administrativo de caráter informativo</b>. Não é processo: não há acusação formal, partes processuais ou réu em sentido técnico.</div>
+<table><tr><th>Termo</th><th>Momento adequado</th></tr>
+<tr><td>Suspeito</td><td>Pessoa sobre a qual recaem suspeitas iniciais</td></tr>
+<tr><td>Investigado</td><td>Pessoa submetida à investigação</td></tr>
+<tr><td>Indiciado</td><td>Investigado contra quem a autoridade formalizou o indiciamento</td></tr>
+<tr><td>Réu ou acusado</td><td>Sujeito passivo de processo penal já instaurado</td></tr></table>
+<div class="box prova">Erro frequente: falar em "réu na fase do inquérito". Durante o IP <b>ainda não há réu</b>.</div>
+
+<h3 id="m1-3">3. Características do IP</h3>
+<h4>3.1 Procedimento INQUISITIVO</h4>
+<p>A direção está concentrada na autoridade policial. Em regra, não há partes, acusação formal, contraditório pleno ou ampla defesa nos moldes processuais.</p>
+<div class="box conc">Inquisitoriedade = <b>concentração de poder em autoridade única</b>; como desdobramento, usualmente não há contraditório ou ampla defesa.</div>
+<p><b>3.1.1 Prerrogativa do advogado</b> ([[oab7|art. 7º, XXI, Lei 8.906/94]]): pode acompanhar a oitiva do suspeito, entrevistar-se reservadamente com o assistido e formular razões e quesitos.</p>
+<p><b>3.1.2 Defesa técnica obrigatória de integrante das forças policiais</b> ([[cpp14a|art. 14-A, CPP]]): na investigação relacionada ao <b>uso de força letal</b> no exercício profissional. Deve haver intimação para constituir defensor e, na falta, providências para indicação de assistência.</p>
+<div class="box prova">A hipótese refere-se ao membro das forças policiais que empregou <b>força letal no desempenho da função</b>.</div>
+<div class="box obs">Posição crítica do professor: a assistência técnica deveria ser assegurada a <b>toda</b> pessoa investigada, e não apenas a determinada categoria.</div>
+
+<h4>3.2 Procedimento DISCRICIONÁRIO</h4>
+<p>O delegado conduz a investigação conforme a estratégia que considere mais eficiente. Não há rito rígido e predeterminado.</p>
+<div class="box adv">Discricionariedade é <b>liberdade dentro da lei</b>, não arbitrariedade.</div>
+<table><tr><th>Ato</th><th>Natureza</th><th>Delegado pode negar?</th></tr>
+<tr><td>Requerimento (vítima/suspeito)</td><td>Pedido</td><td>Sim, se impertinente ou desnecessário</td></tr>
+<tr><td>Exame de corpo de delito (crime com vestígios)</td><td>Exceção legal ([[cpp184|art. 184]])</td><td><b>Não</b></td></tr>
+<tr><td>Requisição (MP/juiz)</td><td>Imposição legal ([[cpp13|art. 13]])</td><td><b>Não</b> (sem que haja hierarquia)</td></tr></table>
+
+<h4>3.3 Procedimento SIGILOSO</h4>
+<p>O IP não segue a publicidade do processo judicial ([[cpp20|art. 20, CPP]]).</p>
+<p><b>Finalidade:</b> preservar a eficiência da investigação; impedir que suspeitos destruam provas ou fujam; proteger intimidade, honra, imagem e vida privada; evitar condenações pela opinião pública antes do julgamento.</p>
+<div class="box adv">O sigilo <b>não é absoluto</b>: não pode ser oposto irrestritamente ao MP, ao juiz ou à defesa quanto aos elementos <b>já documentados</b>.</div>
+<ul>
+<li><b>Direito de acesso do advogado:</b> aos elementos já produzidos, documentados e incorporados — direito <b>retrospectivo</b> ([[oab7|art. 7º, XIV, Lei 8.906/94]] e [[sv14|Súmula Vinculante 14]]).</li>
+<li><b>Apontamentos, cópias e mídias:</b> pode fotografar, copiar e obter espelhamento de mídias já incorporadas.</li>
+<li><b>Procuração:</b> exigida em procedimento sigiloso.</li>
+<li><b>Entrevista do delegado:</b> pode falar à imprensa, desde que não comprometa a investigação, não antecipe diligências nem exponha dados protegidos.</li>
+<li><b>Boicote ao acesso:</b> negativa total ou entrega incompleta gera responsabilidade <b>civil, penal e disciplinar</b>.</li>
+<li><b>Medidas:</b> petição ao <b>juiz das garantias</b> ou <b>mandado de segurança</b> (direito líquido e certo).</li>
+<li><b>Sigilo e presunção de inocência</b> ([[cpp20|art. 20, parágrafo único]]): informações do IP <b>não</b> constam na certidão de antecedentes.</li>
+</ul>
+<div class="box prova">SV 14: acesso amplo aos elementos <b>já documentados</b>. Diligência <b>em andamento</b> (ainda não documentada) pode ter o acesso limitado.</div>
+
+<h4>3.4 Procedimento ESCRITO</h4>
+<p>No IP prevalece a forma <b>documental</b> ([[cpp9|art. 9º, CPP]]): os atos devem ser registrados, reduzidos a termo. A forma documental garante segurança jurídica e permite o controle da legalidade.</p>
+<div class="box obs">Ferramentas novas, como a <b>captação de som e imagem</b>, podem ser empregadas.</div>
+
+<h4>3.5 Procedimento INDISPONÍVEL</h4>
+<p>O delegado <b>não pode arquivar</b> o IP ([[cpp17|art. 17, CPP]]).</p>
+<div class="box conc"><b>(1)</b> Toda investigação iniciada deve ser concluída e encaminhada à autoridade competente. <b>(2)</b> Se o delegado <b>negar o início</b> da investigação, cabe <b>recurso administrativo ao Chefe de Polícia</b> ([[cpp5|art. 5º, §2º, CPP]]).</div>
+
+<h4>3.6 Procedimento DISPENSÁVEL</h4>
+<p>Para a deflagração do processo criminal <b>não é necessária</b> a prévia elaboração de IP. Se o titular da ação já possuir elementos suficientes, pode oferecer a denúncia diretamente.</p>
+<p><b>Inquéritos NÃO policiais</b> — presididos por autoridades distintas da polícia judiciária:</p>
+<ul>
+<li><b>Inquérito parlamentar (CPI):</b> conduzido pelo Legislativo; o relatório é analisado pelo MP em caráter de urgência.</li>
+<li><b>Inquérito militar (IPM):</b> apura <b>infrações militares</b> (arts. 9º e 10 do CPM).</li>
+<li><b>PIC (Procedimento Investigativo Criminal):</b> conduzido pelo MP; não se confunde com o IP.</li>
+</ul>
+<div class="box obs"><b>Teoria dos Poderes Implícitos (STF):</b> se a CF deu ao MP o poder-dever de acusar, deu também as ferramentas para cumprir esse papel — logo, <b>pode investigar</b>.</div>
+<div class="box prova">[[s234|Súmula 234 do STJ]]: o membro do MP que investiga <b>não</b> fica impedido ou suspeito para oferecer a denúncia.</div>
+<div class="box obs"><b>Críticas</b> (Luiz Flávio Borges D'Urso): ausência de lei federal regulando a matéria; excesso de poder; ausência de controle.</div>
+
+<h4>3.7 OFICIOSIDADE · 3.8 AUTORITARIEDADE · 3.9 OFICIALIDADE</h4>
+<ul>
+<li><b>Oficiosidade:</b> nos crimes de ação pública incondicionada, o delegado deve agir <i>ex officio</i> ([[cpp5|art. 5º, I, CPP]]).</li>
+<li><b>Autoritariedade:</b> o IP é presidido por autoridade pública (delegado de carreira).</li>
+<li><b>Oficialidade:</b> é atividade de órgão oficial do Estado; não se admite investigação privada com o mesmo valor jurídico do IP.</li>
+</ul>
+<table><tr><th>Característica</th><th>Ideia-chave</th></tr>
+<tr><td>Inquisitivo</td><td>Poder concentrado; sem contraditório pleno</td></tr>
+<tr><td>Discricionário</td><td>Sem rito rígido; liberdade dentro da lei</td></tr>
+<tr><td>Sigiloso</td><td>Art. 20; não é absoluto (SV 14)</td></tr>
+<tr><td>Escrito</td><td>Forma documental (art. 9º); som e imagem admitidos</td></tr>
+<tr><td>Indisponível</td><td>Delegado não arquiva (art. 17)</td></tr>
+<tr><td>Dispensável</td><td>Processo pode começar sem IP</td></tr>
+<tr><td>Oficiosidade</td><td>Delegado age de ofício (art. 5º, I)</td></tr>
+<tr><td>Autoritariedade</td><td>Delegado é autoridade pública</td></tr>
+<tr><td>Oficialidade</td><td>Órgão oficial do Estado</td></tr></table>
+
+<h3 id="m1-4">4. Valor probatório do IP</h3>
+<p>O IP tem valor probatório <b>RELATIVO</b>: serve de base ao ajuizamento da ação e a medidas cautelares, <b>mas não se presta sozinho a uma condenação</b> ([[cpp155|art. 155, CPP]]).</p>
+<h4>4.2 Elementos migratórios</h4>
+<p>Trazidos da investigação e incorporados ao processo, <b>podem servir de base para a sentença</b>:</p>
+<ul>
+<li><b>a) Provas irrepetíveis</b> — de fácil perecimento, dificilmente refeitas no processo. <i>Ex.: bafômetro.</i></li>
+<li><b>b) Provas cautelares</b> — justificadas pela <b>necessidade e urgência</b>. <i>Ex.: interceptação telefônica.</i> Contraditório e ampla defesa <b>diferidos</b>.</li>
+<li><b>c) Incidente de produção antecipada de provas</b> — conduzido perante o <b>juiz</b> ainda na investigação, com intervenção das futuras partes, contraditório e ampla defesa. <i>Ex.: depoimento sem dano.</i></li>
+</ul>
+<div class="box prova">Regra: IP sozinho não condena. Exceção: provas cautelares, não repetíveis e antecipadas (art. 155, parte final).</div>
+
+<h3 id="m1-5">5. Vícios ou irregularidades</h3>
+<p><b>Conceito:</b> defeitos do IP provenientes do descumprimento da lei ou da CF.</p>
+<ul>
+<li><b>Avocatória:</b> por <b>despacho motivado</b> do Chefe de Polícia, designando outro delegado ([[l12830|art. 2º, §4º, Lei 12.830/2013]]).</li>
+<li>Para STF e STJ, os vícios do IP <b>não contaminam o processo</b>, já que o IP é <b>dispensável</b>.</li>
+</ul>
+<div class="box prova">"Os vícios do IP são <b>endoprocedimentais</b>" — VERDADEIRO. Ficam restritos ao próprio IP.</div>
+
+<h3 id="m1-6">6. Prazos</h3>
+<table><tr><th>Hipótese</th><th>Preso</th><th>Solto</th></tr>
+<tr><td>Delegado estadual</td><td>10 + 15 dias ([[cpp3b|art. 3º-B, §2º]]; [[cpp10|art. 10]])</td><td>30 dias, prorrogáveis pelo tempo e vezes necessárias ([[cpp10|art. 10]])</td></tr>
+<tr><td>Delegado federal</td><td>15 + 15 dias</td><td>Igual ao estadual</td></tr>
+<tr><td>Tráfico de drogas</td><td>30 dias (duplicáveis)</td><td>90 dias (duplicáveis) ([[ld51|art. 51, Lei 11.343/06]])</td></tr>
+<tr><td>Org. criminosas ultraviolentas</td><td>90 + 90 dias</td><td>270 + 270 dias (aula) · 270 + 90 dias (caderno Távora) — art. 5º, Lei 15.358/2026</td></tr></table>
+<div class="box obs"><b>(1)</b> Cabe ao <b>juiz das garantias</b> deliberar sobre a prorrogação, provocado pelo delegado, ouvindo o MP. <b>(2)</b> STF: o delegado pode pedir <b>sucessivas prorrogações</b>, mesmo sem previsão em lei. <b>(3)</b> A perda do prazo <b>não</b> importa na automática libertação: o juiz analisa concretamente a demora.</div>
+<div class="box obs">Investigado submetido a <b>cautelar diversa da prisão</b> (ex.: domiciliar): prazo analisado de forma semelhante ao do solto (doutrina).</div>
+<div class="box adv">Divergência entre as anotações: org. criminosas ultraviolentas, solto — <b>270 + 270</b> (aula) × <b>270 + 90</b> (Távora). Confirme com o professor.</div>
+
+<h3 id="m1-7">7. Procedimento</h3>
+<h4>7.1 1ª etapa — Início</h4>
+<p>O IP é deflagrado por <b>PORTARIA</b>: fato a investigar; envolvidos; diligências; determinação do início.</p>
+<p><b>Notícia-crime:</b> comunicação da infração à autoridade. Destinatários: delegado, MP e juiz.</p>
+<ul>
+<li><b>Notícia DIRETA (cognição imediata):</b> pelas forças policiais ([[cf144|art. 144, CF]]) ou pela imprensa.
+  <div class="box obs"><b>Notícia apócrifa (anônima):</b> para o STF, o delegado deve <b>aferir a plausibilidade</b> antes de baixar portaria. São comuns as <b>VPIs</b> (verificação prévia da informação).</div></li>
+<li><b>Notícia INDIRETA (cognição mediata):</b> por pessoa estranha à polícia, identificada:
+<table><tr><th>Quem comunica</th><th>Instrumento</th><th>Observações</th></tr>
+<tr><td>Vítima / representante</td><td>Requerimento</td><td>Negativa → recurso ao Chefe de Polícia ([[cpp5|art. 5º, §2º]]); na ação privada e pública condicionada depende do interessado (§§4º e 5º)</td></tr>
+<tr><td>MP / Juiz</td><td>Requisição</td><td>Delegado deve investigar ([[cpp5|art. 5º, II]])</td></tr>
+<tr><td>Qualquer pessoa do povo</td><td>Delação</td><td>Só na ação pública incondicionada ([[cpp5|art. 5º, §3º]])</td></tr></table></li>
+</ul>
+<h4>7.2 2ª etapa — Evolução</h4>
+<p>O IP avança por <b>diligências</b> (oitivas, perícias, reconhecimentos, buscas), realizadas de forma <b>discricionária</b>. Os arts. 6º e 7º do CPP trazem rol <b>não exaustivo</b>.</p>
+<h4>7.3 3ª etapa — Encerramento</h4>
+<p>Com o <b>RELATÓRIO</b>: peça essencialmente <b>descritiva</b>, que indica as diligências realizadas e justifica as não feitas ([[cpp10|art. 10, §1º]]). O delegado não emite juízo de valor.</p>
+<div class="box obs"><b>Lei de Drogas:</b> a descrição é mitigada — o delegado justifica o enquadramento como traficante e não como usuário. <i>Atenção: na Lei 11.343/06 essa regra está no [[ld52|art. 52, I]] (as anotações citam art. 53).</i></div>
+<h4>7.4 Desdobramentos</h4>
+<ol>
+<li>Autos com o relatório são remetidos ao <b>juiz (das garantias)</b> ([[cpp23|art. 23]]).</li>
+<li>STF declarou <b>inconstitucionais</b> leis estaduais que previam tramitação direta delegado ↔ MP.</li>
+<li>O juiz abre vista ao MP, que tem três alternativas:</li>
+</ol>
+<table><tr><th>Alternativa</th><th>Cenário</th><th>Ação do MP</th><th>Observação</th></tr>
+<tr><td>1ª Denúncia</td><td>Lastro satisfatório</td><td>Oferece denúncia ([[cpp24|art. 24]])</td><td>Se sem violência/grave ameaça, pena mínima &lt; 4 anos e fora da violência doméstica: <b>ANPP</b> ([[cpp28a|art. 28-A]]) com confissão; homologação judicial; cumprido → extinção da punibilidade</td></tr>
+<tr><td>2ª Diligências</td><td>Lastro frágil, mas com esperança de prova</td><td>Requer diligências <b>imprescindíveis</b> ([[cpp16|art. 16]])</td><td>Juiz não deve indeferir; se indeferir → <b>correição parcial</b></td></tr>
+<tr><td>3ª Arquivamento</td><td>Inviável iniciar o processo</td><td>Promove o arquivamento ([[cpp28|art. 28]])</td><td>Comunica vítima, investigado e delegado</td></tr></table>
+<p><b>Arquivamento — evolução:</b></p>
+<ul>
+<li><b>Antes do Pacote Anticrime:</b> MP requeria ao juiz; concordando, homologava; discordando, remetia ao Procurador-Geral.</li>
+<li><b>Hoje:</b> o promotor <b>promove</b> (ordena) o arquivamento e comunica investigado, ofendido e delegado. A vítima tem <b>30 dias</b> para recorrer à instância de revisão do MP.</li>
+<li><b>STF:</b> o MP deve submeter o arquivamento <b>também ao juiz</b>; se houver ilegalidade ou teratologia, o juiz provoca a instância de revisão do MP.</li>
+</ul>
+
+<h3 id="m1-8">8. Questões complementares</h3>
+<p><b>8.1 TCO</b> — registro simplificado das <b>IMPO</b> (crimes com pena máxima de até 2 anos e contravenções) ([[jec69|art. 69, Lei 9.099/95]]).</p>
+<div class="box prova">STF: o TCO <b>não é procedimento investigativo</b>; pode ser lavrado pela <b>PM</b> e pela <b>polícia rodoviária</b>.</div>
+<p><b>8.2 Efeitos do arquivamento:</b> não faz coisa julgada material; surgindo <b>novas provas</b> antes da extinção da punibilidade, cabe denúncia ([[s524|Súmula 524 do STF]]).</p>
+<p><b>8.3 Definitividade:</b> faz coisa julgada material quando amparado na <b>certeza da atipicidade</b> ou na <b>certeza da extinção da punibilidade</b>.</p>
+<p><b>8.4 Indiciamento</b> — passa-se de um juízo de <b>possibilidade</b> para um de <b>probabilidade</b>: a investigação converge para o principal suspeito. Exige análise técnico-jurídica apontando autoria, materialidade e circunstâncias, e é <b>privativo do delegado</b> ([[l12830|art. 2º, §6º, Lei 12.830/2013]]).</p>
+<table><tr><th>Tipo</th><th>Definição</th></tr>
+<tr><td>Direto</td><td>Na presença do sujeito</td></tr>
+<tr><td>Indireto</td><td>Na ausência do sujeito (ex.: foragido)</td></tr>
+<tr><td>Coercitivo</td><td>Decorre da lavratura do auto de flagrante</td></tr>
+<tr><td>Complexo</td><td>Depende de autorização do Tribunal (autoridade com foro por prerrogativa)</td></tr></table>
+</article>
+
+<!-- ===================== MÓDULO 2 ===================== -->
+<article class="mod" id="m2" data-title="Ação Penal" data-short="Ação Penal">
+<h2>Ação Penal</h2>
+<h3 id="m2-1">1. Conceito</h3>
+<p>É o <b>direito público e subjetivo</b>, positivado na CF, de exigir do Estado-juiz a aplicação da lei ao caso concreto, para a solução da demanda penal.</p>
+<div class="box ent"><b>Ação</b> é o direito de pedir; <b>processo</b> é a ferramenta usada para realizar esse pedido.</div>
+<h3 id="m2-2">2. Modalidades (quanto à iniciativa)</h3>
+<ul><li>Ação penal (pública) de <b>iniciativa pública</b> — o MP começa.</li><li>Ação penal (pública) de <b>iniciativa privada</b> — a vítima começa.</li></ul>
+<div class="box adv">Para <b>Hélio Tornaghi</b>, toda ação penal é <b>pública</b>, pela natureza do bem jurídico. O que oscila é a <b>iniciativa</b>.</div>
+
+<h3 id="m2-3">3. Ação penal de iniciativa PÚBLICA</h3>
+<p>Titularizada <b>privativamente pelo MP</b> ([[cf129|art. 129, I, CF]]; [[cpp257|art. 257, I, CPP]]). Petição inicial: <b>DENÚNCIA</b> ([[cpp41|art. 41, CPP]]).</p>
+<h4>3.2 Princípios</h4>
+<ul>
+<li><b>Obrigatoriedade:</b> dever funcional de ajuizar a ação sempre que presentes os requisitos legais ([[cpp24|art. 24]]).
+<div class="box obs"><b>Não obrigatoriedade</b> (Afrânio Silva Jardim) — espaços de consenso: ANPP ([[cpp28a|art. 28-A]]); transação penal ([[jec76|art. 76, Lei 9.099/95]]); colaboração premiada (Lei 12.850/13).</div></li>
+<li><b>Indisponibilidade:</b> o MP <b>não pode desistir</b> da ação.
+<div class="box conc">Pode se manifestar pela <b>absolvição</b> em alegações finais — isso não é desistência ([[cpp385|art. 385]]). <b>(1)</b> O juiz não está vinculado, podendo condenar. <b>(2)</b> Afrânio Jardim: o MP <b>opina</b>, não <b>requer</b>. <b>(3)</b> Na denúncia, o MP pede <b>sanção penal</b>: pena (imputáveis) ou medida de segurança (inimputáveis).</div>
+<div class="box adv">Recorrer é <b>voluntário</b>; mas, interposto o recurso, o MP <b>não pode desistir</b> ([[cpp576|art. 576]]).</div></li>
+<li><b>Divisibilidade:</b> para os Tribunais Superiores, é <b>divisível</b> (admite desmembramento e aditamento). Para a <b>doutrina majoritária</b>, é <b>indivisível</b>.</li>
+<li><b>Intranscendência / pessoalidade:</b> não ultrapassa a pessoa do réu.</li>
+<li><b>Oficiosidade:</b> MP age <i>ex officio</i>; quando o tipo é omisso, presume-se ação pública incondicionada ([[cp100|art. 100, CP]]).</li>
+<li><b>Oficialidade:</b> exercida por órgão oficial (MP). · <b>Autoritariedade:</b> exercida por autoridade pública.</li>
+</ul>
+
+<h4>3.3 Ação pública INCONDICIONADA</h4>
+<p>MP atua <i>ex officio</i>; interesse público prepondera. É a <b>regra geral</b>; o delegado instaura o IP de ofício ([[cpp5|art. 5º, I]]).</p>
+
+<h4>3.4 Ação pública CONDICIONADA — A) REPRESENTAÇÃO</h4>
+<ul>
+<li><b>Conceito:</b> pedido e autorização, sem a qual as providências penais <b>não podem</b> ser adotadas — sem ela não há ação, IP ou lavratura de flagrante.</li>
+<li><b>Natureza:</b> <b>condição de procedibilidade</b>.</li>
+<li><b>Destinatários:</b> delegado (portaria), MP (requisitar IP, instaurar PIC, denunciar em 15 dias — [[cpp46|art. 46]] — ou arquivar) e juiz (requisitar IP; recomenda-se vista ao MP).</li>
+<li><b>Legitimidade ativa:</b> vítima ou representante legal. Emancipação <b>não</b> tem reflexo penal (curador especial). Morte/ausência → <b>CADI</b> (cônjuge, ascendentes, descendentes, irmãos) — rol preferencial e taxativo; STJ inclui o companheiro ([[cpp24|art. 24, §1º]]).</li>
+<li><b>Prazo:</b> <b>6 meses</b> do <b>conhecimento da autoria</b> ([[cpp38|art. 38]]); <b>decadencial</b> — não se suspende, interrompe ou prorroga; contado pelo [[cp10|art. 10 do CP]].</li>
+</ul>
+<div class="box ex"><b>Exemplo:</b> conhecimento da autoria em <b>10/03/26</b> (entra na contagem) → termo final <b>09/09/26</b>.</div>
+<div class="box obs"><b>Violência doméstica:</b> prazo de <b>12 meses</b> do conhecimento da autoria (conforme aula, art. 38 do CPP).</div>
+<ul>
+<li><b>Retratação:</b> até <b>antes do oferecimento da denúncia</b> ([[cpp25|art. 25]]). Majoritária: cabe <b>retratação da retratação</b>, dentro do prazo. Minoritária: a retratação é renúncia (extingue a punibilidade).</li>
+<li><b>Violência doméstica:</b> há crimes condicionados (ex.: <b>perseguição</b>); a retratação ("renúncia") ocorre em <b>audiência específica</b>, perante o juiz, ouvido o MP, e só é marcada se a mulher manifestar o desejo; possível até <b>antes do RECEBIMENTO</b> da denúncia ([[lmp16|art. 16, Lei 11.340/06]]).</li>
+<li><b>Eficácia objetiva</b> (Rogério Sanches): a representação autoriza providências quanto ao <b>fato</b>; o MP pode denunciar outros envolvidos descobertos. LFG: se a vítima não complementa, renuncia — e beneficia todos.</li>
+<li><b>Não vinculação:</b> pela independência funcional, o MP pode arquivar.</li>
+<li><b>Rigor formal:</b> forma <b>livre</b> (oral ou escrita). Ex.: queixa-crime apresentada por engano pode ser aproveitada como representação.</li>
+</ul>
+<table><tr><th>Retratação da representação</th><th>Até quando?</th></tr>
+<tr><td>Regra geral</td><td>Antes do <b>OFERECIMENTO</b> da denúncia</td></tr>
+<tr><td>Violência doméstica</td><td>Antes do <b>RECEBIMENTO</b>, em audiência específica</td></tr></table>
+
+<h4>3.5 B) REQUISIÇÃO DO MINISTRO DA JUSTIÇA</h4>
+<ul>
+<li><b>Conceito:</b> autorização <b>essencialmente política</b> que condiciona a persecução em hipóteses taxativas. Sem ela: não há IP, flagrante ou ação.</li>
+<li><b>Não é ordem</b> ao MP (independência funcional — [[cf127|art. 127, §1º, CF]]). O termo "requisição" é resquício de 1941.</li>
+<li><b>Natureza:</b> condição de procedibilidade.</li>
+<li><b>Legitimidade:</b> ativa — Ministro da Justiça; destinatário <b>único</b> — o chefe do MP (PGR ou PGJ).</li>
+<li><b>Prazo:</b> <b>não há</b> prazo decadencial; limite = prescrição.</li>
+<li><b>Retratação:</b> Nucci — admite, até o oferecimento da denúncia (analogia ao art. 25 c/c art. 3º). Tourinho Filho — irretratável (silêncio eloquente; imagem do país). <b>Tribunais Superiores não pacificaram.</b></li>
+<li><b>Eficácia objetiva:</b> igual à representação. · <b>Não vincula</b> o MP: pode arquivar, requisitar diligências ou denunciar com capitulação distinta.</li>
+<li><b>Rigor formal:</b> <b>estrito</b> — documento oficial, motivado, dirigido à chefia do MP.</li>
+</ul>
+<div class="box adv">Exemplo de aula: crime de brasileiro no exterior ([[cp7|art. 7º, §3º, "b", CP]]). <i>Na letra da lei, o §3º trata de crime cometido por <b>estrangeiro contra brasileiro</b> fora do Brasil — é aí que se exige requisição. Vale confirmar o exemplo com o professor.</i></div>
+<table><tr><th>Aspecto</th><th>Representação</th><th>Requisição do MJ</th></tr>
+<tr><td>Natureza</td><td>Condição de procedibilidade</td><td>Condição de procedibilidade</td></tr>
+<tr><td>Quem faz</td><td>Vítima/representante (CADI)</td><td>Ministro da Justiça</td></tr>
+<tr><td>Destinatário</td><td>Delegado, MP ou juiz</td><td>Chefe do MP</td></tr>
+<tr><td>Prazo</td><td>6 meses (12 na violência doméstica)</td><td>Sem prazo (limite: prescrição)</td></tr>
+<tr><td>Retratação</td><td>Até o oferecimento</td><td>Divergência Nucci × Tourinho</td></tr>
+<tr><td>Forma</td><td>Livre</td><td>Rígida</td></tr>
+<tr><td>Vincula o MP?</td><td>Não</td><td>Não</td></tr></table>
+
+<h3 id="m2-4">4. Ação penal de iniciativa PRIVADA</h3>
+<p>Titularizada pela vítima ou representante legal, em <b>substituição processual</b> (legitimação extraordinária): atua em nome próprio pleiteando a punição que será exercida pelo Estado.</p>
+<p><b>Fundamentos:</b> evitar o <i>strepitus iudicii</i> (escândalo do processo) e a <b>vitimização secundária</b>.</p>
+<div class="box obs">Vítima = <b>QUERELANTE</b> · Réu = <b>QUERELADO</b> · Inicial = <b>QUEIXA-CRIME</b> ([[cpp41|art. 41]]).</div>
+<div class="box prova">É erro técnico dizer que a vítima "deu queixa" na delegacia: ali ela apresenta <i>notitia criminis</i>. Queixa-crime é a petição inicial em juízo.</div>
+<h4>4.2 Princípios</h4>
+<p><b>Oportunidade</b> — a vítima só ajuíza se lhe for conveniente:</p>
+<ul>
+<li><b>Decadência:</b> perda do direito pelo decurso de <b>6 meses</b> do conhecimento da autoria ([[cpp38|art. 38]]; [[cp103|art. 103, CP]]); 12 meses na violência doméstica. Extingue a punibilidade ([[cp107|art. 107, IV, CP]]). Prazo fatal, mesmo em feriado.</li>
+<li><b>Renúncia:</b> ato <b>unilateral</b>, <b>antes</b> da ação; expressa ou tácita; extingue a punibilidade ([[cp107|art. 107, V]]); <b>irretratável</b>. Ex. tácita: postar foto afetuosa de reconciliação com o autor.</li>
+</ul>
+<p><b>Disponibilidade</b> — a vítima pode desistir da ação ajuizada:</p>
+<ul>
+<li><b>Perdão:</b> <b>após</b> o ajuizamento; expresso ou tácito; <b>bilateral</b> (o querelado aceita). Intimado, tem <b>3 dias</b>; o <b>silêncio importa aceitação</b> ([[cpp58|art. 58]]). Não confundir com perdão judicial (unilateral, do juiz).</li>
+<li><b>Perempção:</b> sanção pelo descaso ([[cpp60|art. 60]]): 30 dias sem andamento; sucessor não se habilita em 60 dias; falta injustificada a ato ou não pedir condenação nas alegações finais; extinção da PJ sem sucessor.</li>
+</ul>
+<table><tr><th>Instituto</th><th>Momento</th><th>Característica</th></tr>
+<tr><td>Decadência</td><td>Antes da ação</td><td>Perda do prazo</td></tr>
+<tr><td>Renúncia</td><td>Antes da ação</td><td>Unilateral; irretratável</td></tr>
+<tr><td>Perdão</td><td>Durante a ação</td><td>Bilateral (silêncio em 3 dias = aceita)</td></tr>
+<tr><td>Perempção</td><td>Durante a ação</td><td>Sanção pelo descaso (art. 60)</td></tr></table>
+<p><b>Indivisibilidade</b> — deve processar <b>todos os infratores conhecidos</b>; o MP fiscaliza ([[cpp48|art. 48]]):</p>
+<ul>
+<li>Omissão <b>voluntária</b> = renúncia tácita, que se estende a <b>todos</b> ([[cpp49|art. 49]]) → extinção da punibilidade geral.</li>
+<li>Omissão <b>involuntária</b> = a vítima <b>adita</b> a queixa. O MP <b>não pode</b> incluir novos corréus na ação exclusivamente privada.</li>
+<li>Perdão a um aproveita a todos, mas <b>não</b> a quem recusar ([[cpp51|art. 51]]).</li>
+</ul>
+<p><b>Intranscendência</b> — não ultrapassa a pessoa do réu ([[cf5|art. 5º, XLV, CF]]).</p>
+<h4>4.3 Modalidades</h4>
+<table><tr><th>Modalidade</th><th>Titular</th><th>Prazo</th></tr>
+<tr><td>Exclusiva ([[cpp30|arts. 30]] e [[cpp31|31]])</td><td>Vítima/representante; CADI na morte/ausência</td><td>6 meses do conhecimento da autoria</td></tr>
+<tr><td>Personalíssima ([[cp236|art. 236, CP]])</td><td>Só a vítima; sem representação nem sucessão</td><td>6 meses do trânsito em julgado da sentença cível que anula o casamento</td></tr>
+<tr><td>Subsidiária da pública ([[cf5|art. 5º, LIX, CF]]; [[cpp29|art. 29]])</td><td>Vítima, diante da <b>inércia</b> do MP</td><td>6 meses após o fim do prazo do MP (5 dias preso / 15 solto — [[cpp46|art. 46]])</td></tr></table>
+<div class="box prova">Subsidiária <b>não cabe</b> se, no prazo, o MP denunciou, requisitou diligências, promoveu arquivamento ou propôs ANPP, transação ou suspensão do processo — não houve inércia.</div>
+<div class="box obs">Na subsidiária, o MP é <b>interveniente adesivo obrigatório</b>, sob pena de nulidade ([[cpp564|art. 564, III, "d"]]), com os amplos poderes do [[cpp29|art. 29]].</div>
+</article>
+
+<!-- ===================== MÓDULO 3 ===================== -->
+<article class="mod" id="m3" data-title="Jurisdição e Competência" data-short="Competência">
+<h2>Jurisdição e Competência</h2>
+<h3 id="m3-1">1. Conceitos</h3>
+<p><b>Jurisdição:</b> ação de <b>dizer o direito</b> — poder-dever positivado na CF, usualmente entregue ao Judiciário, para aplicar a lei ao caso concreto.</p>
+<p><b>Competência:</b> <b>medida da jurisdição</b> — a quantidade de poder conferido por lei a um juiz ou Tribunal ([[cpp69|art. 69, CPP]]).</p>
+<h3 id="m3-2">2. Critérios definidores</h3>
+<ul><li><i>Ratione materiae</i> → qual é a Justiça.</li><li><i>Ratione loci</i> → qual é o juízo territorial.</li><li><i>Ratione personae</i> → foro por prerrogativa de função.</li></ul>
+
+<h3 id="m3-3">3. Em razão da MATÉRIA</h3>
+<ul>
+<li><b>Justiça comum estadual:</b> competência <b>residual</b>.</li>
+<li><b>Justiça comum federal:</b> expressa na CF — [[cf108|art. 108]] (TRFs) e [[cf109|art. 109]] (juízes federais; a parte penal começa no inciso IV).</li>
+<li><b>Justiça Eleitoral:</b> infrações eleitorais e comuns conexas (estaduais ou federais). Aplicam-se composição civil, transação e suspensão condicional ([[jec74|arts. 74]], [[jec76|76]] e [[jec89|89 da Lei 9.099/95]]) e o ANPP.</li>
+<li><b>Justiça Militar:</b> só infrações dos arts. 9º e 10 do CPM. <b>Não</b> se aplica a Lei 9.099/95 ([[jec90a|art. 90-A]]); STM: <b>não</b> cabe ANPP. Estadual: só PMs e bombeiros militares. Federal: Forças Armadas e <b>civis</b> que cometam crime militar federal.</li>
+</ul>
+<h4>3.3 Pela NATUREZA da infração</h4>
+<ul>
+<li>Crimes dolosos contra a vida (arts. 121 a 128, CP) → <b>Júri</b> ([[cf5|art. 5º, XXXVIII, "d", CF]]).</li>
+<li>Infrações de menor potencial ofensivo → <b>JECRIM</b> ([[cf98|art. 98, I, CF]]): crimes com pena máxima até 2 anos e <b>todas</b> as contravenções ([[jec61|art. 61, Lei 9.099/95]]).</li>
+</ul>
+
+<h3 id="m3-4">4. Em razão do LUGAR</h3>
+<p><b>1ª regra — teorias territoriais:</b></p>
+<table><tr><th>Teoria</th><th>Critério</th><th>Quando</th></tr>
+<tr><td>Resultado</td><td>Local da consumação</td><td>Regra geral ([[cpp70|art. 70, CPP]]); consumação = [[cp14|art. 14, I, CP]]</td></tr>
+<tr><td>Ação</td><td>Local do último ato de execução</td><td>Tentativa; JECRIM ([[jec63|art. 63, Lei 9.099/95]]); Júri (STJ — "teoria do esboço do resultado")</td></tr>
+<tr><td>Ubiquidade</td><td>Ação ou resultado</td><td>Crimes à distância (art. 70, §§1º e 2º)</td></tr></table>
+<p><b>2ª regra — domicílio do réu</b> ([[cpp72|art. 72]]), subsidiária. <b>Domicílio da vítima</b> no estelionato do [[cpp70|art. 70, §4º]].</p>
+<p><b>3ª regra — prevenção</b> ([[cpp83|art. 83]]): juiz que primeiro pratica ato do processo ou medida cautelar a ele relativa.</p>
+<div class="box adv">Com o <b>juiz das garantias</b>, atos da investigação <b>não geram prevenção</b>.</div>
+<h4>4.3 Questões complementares</h4>
+<ul>
+<li>Divisa entre comarcas ou divisa incerta → prevenção ([[cpp70|art. 70, §3º]]).</li>
+<li>Crime permanente ou continuado em várias comarcas → prevenção ([[cpp71|art. 71]]).</li>
+<li>Réu com mais de um domicílio → prevenção ([[cpp72|art. 72, §1º]]).</li>
+<li>Vítima com mais de um domicílio ou várias vítimas → prevenção.</li>
+<li>Ação <b>privada exclusiva</b>: a vítima pode optar pelo domicílio do réu ([[cpp73|art. 73]]) — <b>não</b> na subsidiária da pública.</li>
+</ul>
+<p><b>Território brasileiro:</b> fronteiras; mar territorial (0 a 12 milhas náuticas, na maré baixa); espaço aéreo.</p>
+<table><tr><th>Natureza</th><th>Bandeira</th><th>É Brasil?</th></tr>
+<tr><td>Pública</td><td>Brasileira</td><td>Sim, em qualquer lugar</td></tr>
+<tr><td>Pública</td><td>Estrangeira</td><td>Nunca</td></tr>
+<tr><td>Privada</td><td>Brasileira</td><td>Em trânsito no território ou em alto-mar</td></tr>
+<tr><td>Privada</td><td>Estrangeira</td><td>Quando ingressar no território</td></tr></table>
+<ul>
+<li><b>Viagem nacional:</b> 1º local de pouso/atracagem <b>após o delito</b> ([[cpp89|arts. 89]] e [[cpp90|90]]).</li>
+<li><b>Viagem internacional:</b> afastando-se → local de saída; aproximando-se → local de chegada.</li>
+<li><b>Crime no estrangeiro</b> ([[cp7|art. 7º, CP]]): capital do estado onde residiu por último; nunca residiu → <b>Brasília</b> ([[cpp88|art. 88]]).</li>
+</ul>
+
+<h3 id="m3-5">5. Em razão da PESSOA (foro por prerrogativa de função)</h3>
+<p>Autoridades julgadas diretamente em Tribunal pela importância do cargo ([[cpp84|art. 84]]). É inadequado dizer "foro privilegiado": o prestígio é da <b>função</b>. É competência <b>absoluta</b>.</p>
+<h4>5.2 Competência originária dos tribunais</h4>
+<table><tr><th>Tribunal</th><th>Executivo</th><th>Legislativo</th><th>Judiciário</th><th>Outras</th></tr>
+<tr><td><b>STF</b> ([[cf102|art. 102, I, b/c]])</td><td>Presidente; Vice; Ministros de Estado</td><td>Senadores; Deputados Federais</td><td>Ministros dos Tribunais Superiores</td><td>PGR; chefes de missão diplomática permanente</td></tr>
+<tr><td><b>STJ</b> ([[cf105|art. 105, I, a]])</td><td>Governadores (Estados e DF)</td><td>—</td><td>Desembargadores dos TJs; membros dos TRFs, TREs e TRTs</td><td>MPU que oficie perante tribunais</td></tr>
+<tr><td><b>TRF</b> ([[cf108|art. 108, I, a]])</td><td>—</td><td>—</td><td>Juízes federais (inclusive Justiça Militar e do Trabalho)</td><td>Membros do MPU</td></tr>
+<tr><td><b>TJ</b> ([[cf29|art. 29, X]]; [[cf96|96, III]]; [[cf125|125, §1º]])</td><td>Prefeitos</td><td>Deputados Estaduais (CE)</td><td>Juízes estaduais</td><td>MP estadual</td></tr></table>
+<h4>✿ Meus macetes para decorar</h4>
+<div class="mac">
+<div class="mc"><div class="mt">STF</div><div class="fr">“<b>P</b>aulo <b>V</b>ai <b>M</b>orrer <b>D</b>e <b>S</b>audades <b>S</b>ua <b>P</b>edro <b>G</b>ean”</div>
+<ul><li><b>Paulo</b> — Presidente da República</li><li><b>Vai</b> — Vice-Presidente</li><li><b>Morrer</b> — Ministros de Estado</li><li><b>De</b> — Deputados Federais</li><li><b>Saudades</b> — Senadores</li><li><b>Sua</b> — Superiores (Ministros dos Tribunais Superiores: STJ, TST, TSE, STM)</li><li><b>Pedro</b> — PGR (Procurador-Geral da República)</li><li><b>Gean</b> — Gabinete / Chefes de Missão Diplomática Permanente</li></ul></div>
+<div class="mc"><div class="mt">STJ</div><div class="fr">“<b>G</b>onçalves <b>D</b>esmentiu <b>T</b>riplamente <b>R</b>enan <b>M</b>ário <b>P</b>ereira”</div>
+<ul><li><b>Gonçalves</b> — Governadores dos Estados e do DF</li><li><b>Desmentiu</b> — Desembargadores dos TJs</li><li><b>Triplamente</b> — Tribunais Regionais (TRFs, TREs e TRTs)</li><li><b>Renan / Mário / Pereira</b> — Membros do MPU que oficiam Perante tribunais</li></ul><p class="lx">Lembrete extra: STJ não tem Legislativo.</p></div>
+<div class="mc"><div class="mt">TRF</div><div class="fr">“<b>J</b>úlia <b>F</b>ez <b>T</b>rufa de <b>M</b>el e <b>M</b>uito <b>P</b>ão <b>P</b>rimeiro”</div>
+<ul><li><b>Júlia</b> — Juízes</li><li><b>Fez</b> — Federais (inclusive da Justiça Militar e do Trabalho)</li><li><b>Trufa de Mel</b> — Tribunal / Justiça Militar e do Trabalho</li><li><b>Muito Pão</b> — Membros do MPU / Procuradores</li><li><b>Primeiro</b> — Que atuam em 1º grau</li></ul><p class="lx">Lembrete extra: TRF só tem Judiciário e MPU, sem político nenhum.</p></div>
+<div class="mc"><div class="mt">TJ</div><div class="fr">“<b>P</b>refeito <b>D</b>epois <b>E</b>studaremos <b>J</b>uros <b>E</b>staduais e <b>M</b>uito <b>P</b>ara <b>E</b>specializarmos”</div>
+<ul><li><b>Prefeito</b> — Prefeitos</li><li><b>Depois Estudaremos</b> — Deputados Estaduais (conforme a Constituição Estadual)</li><li><b>Juros Estaduais</b> — Juízes Estaduais</li><li><b>Muito Para Especializarmos</b> — Membros do Ministério Público Estadual</li></ul></div>
+</div>
+
+<h4>5.3 Questões complementares</h4>
+<p><b>A) Requisitos cumulativos (AP 937/STF):</b> <b>temporal</b> (crime durante o exercício) + <b>temático</b> (crime relacionado às funções).</p>
+<div class="box ex">Deputado Federal que comete crime de violência doméstica: falta o requisito temático → <b>1ª instância</b>.</div>
+<div class="box prova">Sem os DOIS requisitos, não há foro.</div>
+<p><b>B) Constituição Estadual e simetria:</b> a CE pode dar foro no TJ desde que haja simetria com a CF (ex.: CE/BA — Vice-Governador e Secretários de Estado).</p>
+<div class="box prova">Defensores Públicos e Procuradores do Estado: como a CF não dá foro a DPU e AGU, a CE <b>não pode</b> dar — STF declarou inconstitucional.</div>
+<p><b>C) Corréu comum (Súmula 704):</b> regra é a unidade no tribunal de maior graduação ([[cpp78|art. 78, III]]).</p>
+<div class="box prova">[[s704|Súmula 704/STF]]: atrair o corréu ao foro de um dos denunciados não viola juiz natural, ampla defesa e devido processo legal.</div>
+<p>Desmembramento <b>facultativo</b> ([[cpp80|art. 80]]): AP 470 (Mensalão) — julgamento conjunto excepcional; Lava Jato — regra geral passou a ser o <b>desmembramento</b> (com foro fica no tribunal; sem foro vai ao 1º grau).</p>
+<p><b>D) Crime fora do território de origem:</b> o foro prevalece sobre o local do crime.</p>
+<div class="box prova">Autoridade com foro em TJ/TRF/TRT que comete crime em outro Estado é julgada pelo <b>tribunal de origem</b>.</div>
+<p><b>E) Foro × Júri:</b> foro na CF prevalece (se ligado à função); foro só na CE → Júri.</p>
+<div class="box prova">[[sv45|Súmula Vinculante 45]]: o Júri prevalece sobre foro estabelecido <b>exclusivamente</b> pela Constituição Estadual.</div>
+<p><b>F) Crimes eleitorais:</b> autoridades com foro no TJ ou TRF → <b>TRE</b> ([[s702|Súmula 702/STF]]). Exceção: STF e STJ não perdem a competência (Deputados/Senadores no STF; Governadores no STJ).</p>
+<p><b>G) Perpetuação no tempo:</b></p>
+<ul><li>Crimes em geral: encerrado o cargo, encerra-se o foro ("ex é ex" — [[s451|Súmula 451/STF]]).</li><li>Improbidade: <b>nunca</b> há foro.</li><li>STF atual: nos <b>crimes funcionais</b>, o foro <b>permanece</b> mesmo para ex-autoridades.</li></ul>
+<div class="box prova">Ex-autoridade: regra "ex é ex"; exceção atual — crimes funcionais mantêm o foro. Improbidade: nunca tem foro.</div>
+</article>
+
+<!-- ===================== MÓDULO 4 ===================== -->
+<article class="mod" id="m4" data-title="Conexão, Continência e Perpetuação" data-short="Conexão e Continência">
+<h2>Conexão, Continência e Perpetuação da Jurisdição</h2>
+<h3 id="m4-1">6. Conexão</h3>
+<p><b>Conceito único:</b> institutos de <b>atração</b> que permitem reunir em um mesmo processo pessoas e/ou infrações que poderiam ser julgadas separadamente — evitando <b>decisões contraditórias</b> e <b>economizando atos</b>.</p>
+<p><b>Conexão:</b> dois ou mais crimes que se ligam e devem ser julgados juntos ([[cpp76|art. 76, CPP]]).</p>
+<h4>6.1 Intersubjetiva (vários crimes + vários agentes)</h4>
+<table><tr><th>Espécie</th><th>Requisitos</th><th>Exemplo</th></tr>
+<tr><td>Simultaneidade (I, 1ª parte)</td><td>Mesmo tempo e lugar, <b>sem</b> acordo prévio</td><td>Saques a lojas diferentes durante um blecaute</td></tr>
+<tr><td>Concursal (I, 2ª parte)</td><td><b>Com</b> acordo prévio, ainda que tempo e lugar diversos</td><td>Três pessoas combinam um furto e a receptação do veículo da fuga</td></tr>
+<tr><td>Reciprocidade (I, 3ª parte)</td><td>Uns contra os outros</td><td>A lesiona B; B danifica o carro de A</td></tr></table>
+<div class="box prova">Acordo prévio para um <b>único</b> crime (caso Richthofen) = <b>continência</b> por cumulação subjetiva ([[cpp77|art. 77, I]]), não conexão.</div>
+<div class="box prova">A <b>rixa</b> ([[cp137|art. 137, CP]]) é crime único plurissubjetivo — sozinha <b>não</b> gera conexão por reciprocidade.</div>
+<div class="box adv">Sobre o exemplo da receptação: para a doutrina majoritária, quem participou do crime anterior não responde por receptação do próprio produto (pós-fato impunível). Confirme o exemplo com o professor.</div>
+<h4>6.2 Lógica / teleológica (II)</h4>
+<p>Um crime praticado para <b>facilitar ou ocultar</b> outro, ou garantir <b>impunidade ou vantagem</b>.</p>
+<div class="box ex">Homicídio da testemunha para assegurar a impunidade de um roubo; falsificação feita só para viabilizar fraude financeira.</div>
+<h4>6.3 Instrumental / probatória (III)</h4>
+<p>A <b>prova</b> de um crime ou de suas circunstâncias influencia a prova de outro.</p>
+
+<h3 id="m4-2">7. Continência ([[cpp77|art. 77]])</h3>
+<p>Um crime está <b>contido</b> no outro; prevalece o <b>fator unidade</b>.</p>
+<ul><li><b>Cumulação subjetiva:</b> <b>um crime</b> praticado por <b>duas ou mais pessoas</b>.</li><li><b>Cumulação objetiva:</b> <b>uma conduta</b> → <b>duas ou mais infrações</b> (concurso formal — [[cp70|arts. 70]], 73 e 74 do CP).</li></ul>
+<div class="box prova"><b>Conexão</b> = vários crimes ligados. <b>Continência</b> = unidade (um crime com vários agentes, ou uma conduta com vários resultados).</div>
+
+<h3 id="m4-3">8. Foro prevalente ([[cpp78|art. 78]])</h3>
+<p>Define o juízo que julga todos os crimes e autores reunidos.</p>
+<div class="box adv"><b>Separação obrigatória</b> ([[cpp79|art. 79]]): comum × <b>militar</b> e comum × <b>juízo de menores</b> — não há reunião ([[s90|Súmula 90/STJ]]).</div>
+<table><tr><th>Concurso</th><th>Quem prevalece</th></tr>
+<tr><td>Eleitoral × Comum</td><td>Eleitoral (art. 78, IV)</td></tr>
+<tr><td>Militar × qualquer outra</td><td>Ninguém: separação (art. 79, I; Súm. 90/STJ)</td></tr>
+<tr><td>Comum × menores (ECA)</td><td>Ninguém: separação (art. 79, II)</td></tr>
+<tr><td>Júri × juiz singular</td><td>Júri (art. 78, I)</td></tr>
+<tr><td>Maior × menor graduação</td><td>Maior graduação (art. 78, III; Súm. 704)</td></tr>
+<tr><td>Federal × Estadual</td><td>Federal ([[s122|Súm. 122/STJ]])</td></tr>
+<tr><td>Mesma categoria</td><td>Pena mais grave → mais infrações → prevenção (art. 78, II)</td></tr></table>
+<div class="box ex">Deputado Federal manda o motorista buscar a mala da lavagem; ambos sabem. Os dois são julgados no <b>STF</b>: continência por cumulação <b>subjetiva</b> (um crime + duas pessoas) e Súmula 704. <i>(As anotações dizem "objetiva"; pela definição do item 7, é subjetiva.)</i></div>
+<div class="box prova">Ordem de raciocínio: 1) militar ou menor? separa · 2) eleitoral? atrai · 3) Júri? atrai · 4) graus diferentes? maior graduação · 5) federal × estadual? federal · 6) mesma categoria: pena mais grave → nº de infrações → prevenção.</div>
+
+<h3 id="m4-4">9. Separação de processos</h3>
+<ul><li><b>Obrigatória</b> (a <b>lei</b> manda — [[cpp79|art. 79]]): comum + militar; maior + menor de idade.</li><li><b>Facultativa</b> (o <b>juiz</b> decide — [[cpp80|art. 80]]).</li></ul>
+
+<h3 id="m4-5">10. Perpetuação da jurisdição ([[cpp81|art. 81]])</h3>
+<p>Se o juízo prevalente <b>absolver</b> ou <b>desclassificar</b>, continua competente para os crimes conexos ou continentes. É uma <b>regra de estabilidade</b>.</p>
+<div class="box obs">No Júri há regra própria: se a desclassificação/impronúncia/absolvição ocorre na fase de pronúncia, o processo vai ao juízo competente ([[cpp81|art. 81, parágrafo único]]).</div>
+</article>
+
+</template>
+
+<script>
+const LAWS = {
+cpp1:{g:"CPP",t:"Art. 1º – CPP",x:`O processo penal reger-se-á, em todo o território brasileiro, por este Código, ressalvados:
+I – os tratados, as convenções e regras de direito internacional;
+II – as prerrogativas constitucionais do Presidente da República, dos ministros de Estado, nos crimes conexos com os do Presidente da República, e dos ministros do Supremo Tribunal Federal, nos crimes de responsabilidade;
+III – os processos da competência da Justiça Militar;
+IV – os processos da competência do tribunal especial;
+V – os processos por crimes de imprensa.
+Parágrafo único. Aplicar-se-á, entretanto, este Código aos processos referidos nos nºs IV e V, quando as leis especiais que os regulam não dispuserem de modo diverso.`},
+cpp2:{g:"CPP",t:"Art. 2º – CPP",x:`A lei processual penal aplicar-se-á desde logo, sem prejuízo da validade dos atos realizados sob a vigência da lei anterior.`},
+cpp3:{g:"CPP",t:"Art. 3º – CPP",x:`A lei processual penal admitirá interpretação extensiva e aplicação analógica, bem como o suplemento dos princípios gerais de direito.`},
+cpp3a:{g:"CPP",t:"Art. 3º-A – CPP",x:`O processo penal terá estrutura acusatória, vedadas a iniciativa do juiz na fase de investigação e a substituição da atuação probatória do órgão de acusação.`,n:"O STF (ADIs 6.298, 6.299, 6.300 e 6.305) deu interpretação conforme a este artigo, admitindo que o juiz, pontualmente e nos limites legais, determine diligências para dirimir dúvida sobre questão relevante."},
+cpp3b:{g:"CPP",t:"Art. 3º-B – CPP (trechos)",x:`O juiz das garantias é responsável pelo controle da legalidade da investigação criminal e pela salvaguarda dos direitos individuais cuja franquia tenha sido reservada à autorização prévia do Poder Judiciário, competindo-lhe especialmente: (...)
+VIII – prorrogar o prazo de duração do inquérito, estando o investigado preso, em vista das razões apresentadas pela autoridade policial e observado o disposto no § 2º deste artigo; (...)
+§ 2º Se o investigado estiver preso, o juiz das garantias poderá, mediante representação da autoridade policial e ouvido o Ministério Público, prorrogar, uma única vez, a duração do inquérito por até 15 (quinze) dias, após o que, se ainda assim a investigação não for concluída, a prisão será imediatamente relaxada.`,n:"O STF (ADI 6.298) entendeu que a prorrogação pode ocorrer mais de uma vez, de forma fundamentada, e que a inobservância do prazo não gera relaxamento automático da prisão: o juiz deve avaliar os motivos."},
+cpp4:{g:"CPP",t:"Art. 4º – CPP",x:`A polícia judiciária será exercida pelas autoridades policiais no território de suas respectivas circunscrições e terá por fim a apuração das infrações penais e da sua autoria.
+Parágrafo único. A competência definida neste artigo não excluirá a de autoridades administrativas, a quem por lei seja cometida a mesma função.`},
+cpp5:{g:"CPP",t:"Art. 5º – CPP",x:`Nos crimes de ação pública o inquérito policial será iniciado:
+I – de ofício;
+II – mediante requisição da autoridade judiciária ou do Ministério Público, ou a requerimento do ofendido ou de quem tiver qualidade para representá-lo.
+§ 1º O requerimento a que se refere o nº II conterá sempre que possível:
+a) a narração do fato, com todas as circunstâncias;
+b) a individualização do indiciado ou seus sinais característicos e as razões de convicção ou de presunção de ser ele o autor da infração, ou os motivos de impossibilidade de o fazer;
+c) a nomeação das testemunhas, com indicação de sua profissão e residência.
+§ 2º Do despacho que indeferir o requerimento de abertura de inquérito caberá recurso para o chefe de Polícia.
+§ 3º Qualquer pessoa do povo que tiver conhecimento da existência de infração penal em que caiba ação pública poderá, verbalmente ou por escrito, comunicá-la à autoridade policial, e esta, verificada a procedência das informações, mandará instaurar inquérito.
+§ 4º O inquérito, nos crimes em que a ação pública depender de representação, não poderá sem ela ser iniciado.
+§ 5º Nos crimes de ação privada, a autoridade policial somente poderá proceder a inquérito a requerimento de quem tenha qualidade para intentá-la.`},
+cpp9:{g:"CPP",t:"Art. 9º – CPP",x:`Todas as peças do inquérito policial serão, num só processado, reduzidas a escrito ou datilografadas e, neste caso, rubricadas pela autoridade.`},
+cpp10:{g:"CPP",t:"Art. 10 – CPP",x:`O inquérito deverá terminar no prazo de 10 dias, se o indiciado tiver sido preso em flagrante, ou estiver preso preventivamente, contado o prazo, nesta hipótese, a partir do dia em que se executar a ordem de prisão, ou no prazo de 30 dias, quando estiver solto, mediante fiança ou sem ela.
+§ 1º A autoridade fará minucioso relatório do que tiver sido apurado e enviará autos ao juiz competente.
+§ 2º No relatório poderá a autoridade indicar testemunhas que não tiverem sido inquiridas, mencionando o lugar onde possam ser encontradas.
+§ 3º Quando o fato for de difícil elucidação, e o indiciado estiver solto, a autoridade poderá requerer ao juiz a devolução dos autos, para ulteriores diligências, que serão realizadas no prazo marcado pelo juiz.`},
+cpp13:{g:"CPP",t:"Art. 13 – CPP",x:`Incumbirá ainda à autoridade policial:
+I – fornecer às autoridades judiciárias as informações necessárias à instrução e julgamento dos processos;
+II – realizar as diligências requisitadas pelo juiz ou pelo Ministério Público;
+III – cumprir os mandados de prisão expedidos pelas autoridades judiciárias;
+IV – representar acerca da prisão preventiva.`},
+cpp14a:{g:"CPP",t:"Art. 14-A – CPP (caput, §§ 1º e 2º)",x:`Nos casos em que servidores vinculados às instituições dispostas no art. 144 da Constituição Federal figurarem como investigados em inquéritos policiais, inquéritos policiais militares e demais procedimentos extrajudiciais, cujo objeto for a investigação de fatos relacionados ao uso da força letal praticados no exercício profissional, de forma consumada ou tentada, incluindo as situações dispostas no art. 23 do Código Penal, o indiciado poderá constituir defensor.
+§ 1º Para os casos previstos no caput deste artigo, o investigado deverá ser citado da instauração do procedimento investigatório, podendo constituir defensor no prazo de até 48 (quarenta e oito) horas a contar do recebimento da citação.
+§ 2º Esgotado o prazo disposto no § 1º deste artigo com ausência de nomeação de defensor pelo investigado, a autoridade responsável pela investigação deverá intimar a instituição a que estava vinculado o investigado à época da ocorrência dos fatos, para que essa, no prazo de 48 (quarenta e oito) horas, indique defensor para a representação do investigado.`},
+cpp16:{g:"CPP",t:"Art. 16 – CPP",x:`O Ministério Público não poderá requerer a devolução do inquérito à autoridade policial, senão para novas diligências, imprescindíveis ao oferecimento da denúncia.`},
+cpp17:{g:"CPP",t:"Art. 17 – CPP",x:`A autoridade policial não poderá mandar arquivar autos de inquérito.`},
+cpp20:{g:"CPP",t:"Art. 20 – CPP",x:`A autoridade assegurará no inquérito o sigilo necessário à elucidação do fato ou exigido pelo interesse da sociedade.
+Parágrafo único. Nos atestados de antecedentes que lhe forem solicitados, a autoridade policial não poderá mencionar quaisquer anotações referentes a instauração de inquérito contra os requerentes.`},
+cpp23:{g:"CPP",t:"Art. 23 – CPP",x:`Ao fazer a remessa dos autos do inquérito ao juiz competente, a autoridade policial oficiará ao Instituto de Identificação e Estatística, ou repartição congênere, mencionando o juízo a que tiverem sido distribuídos, e os dados relativos à infração penal e à pessoa do indiciado.`},
+cpp24:{g:"CPP",t:"Art. 24 – CPP",x:`Nos crimes de ação pública, esta será promovida por denúncia do Ministério Público, mas dependerá, quando a lei o exigir, de requisição do Ministro da Justiça, ou de representação do ofendido ou de quem tiver qualidade para representá-lo.
+§ 1º No caso de morte do ofendido ou quando declarado ausente por decisão judicial, o direito de representação passará ao cônjuge, ascendente, descendente ou irmão.
+§ 2º Seja qual for o crime, quando praticado em detrimento do patrimônio ou interesse da União, Estado e Município, a ação penal será pública.`},
+cpp25:{g:"CPP",t:"Art. 25 – CPP",x:`A representação será irretratável, depois de oferecida a denúncia.`},
+cpp28:{g:"CPP",t:"Art. 28 – CPP",x:`Ordenado o arquivamento do inquérito policial ou de quaisquer elementos informativos da mesma natureza, o órgão do Ministério Público comunicará à vítima, ao investigado e à autoridade policial e encaminhará os autos para a instância de revisão ministerial para fins de homologação, na forma da lei.
+§ 1º Se a vítima, ou seu representante legal, não concordar com o arquivamento do inquérito policial, poderá, no prazo de 30 (trinta) dias do recebimento da comunicação, submeter a matéria à revisão da instância competente do órgão ministerial, conforme dispuser a respectiva lei orgânica.
+§ 2º Nas ações penais relativas a crimes praticados em detrimento da União, Estados e Municípios, a revisão do arquivamento do inquérito policial poderá ser provocada pela chefia do órgão a quem couber a sua representação judicial.`,n:"O STF (ADI 6.298) deu interpretação conforme: o MP deve submeter sua manifestação de arquivamento ao juiz competente, que, se vir ilegalidade ou teratologia, pode submeter a matéria à revisão ministerial."},
+cpp28a:{g:"CPP",t:"Art. 28-A – CPP (caput, incisos, §§ 2º, 4º e 13)",x:`Não sendo caso de arquivamento e tendo o investigado confessado formal e circunstancialmente a prática de infração penal sem violência ou grave ameaça e com pena mínima inferior a 4 (quatro) anos, o Ministério Público poderá propor acordo de não persecução penal, desde que necessário e suficiente para reprovação e prevenção do crime, mediante as seguintes condições ajustadas cumulativa e alternativamente:
+I – reparar o dano ou restituir a coisa à vítima, exceto na impossibilidade de fazê-lo;
+II – renunciar voluntariamente a bens e direitos indicados pelo Ministério Público como instrumentos, produto ou proveito do crime;
+III – prestar serviço à comunidade ou a entidades públicas por período correspondente à pena mínima cominada ao delito diminuída de um a dois terços, em local a ser indicado pelo juízo da execução, na forma do art. 46 do Código Penal;
+IV – pagar prestação pecuniária, a ser estipulada nos termos do art. 45 do Código Penal, a entidade pública ou de interesse social, a ser indicada pelo juízo da execução, que tenha, preferencialmente, como função proteger bens jurídicos iguais ou semelhantes aos aparentemente lesados pelo delito; ou
+V – cumprir, por prazo determinado, outra condição indicada pelo Ministério Público, desde que proporcional e compatível com a infração penal imputada.
+(...)
+§ 2º O disposto no caput deste artigo não se aplica nas seguintes hipóteses:
+I – se for cabível transação penal de competência dos Juizados Especiais Criminais, nos termos da lei;
+II – se o investigado for reincidente ou se houver elementos probatórios que indiquem conduta criminal habitual, reiterada ou profissional, exceto se insignificantes as infrações penais pretéritas;
+III – ter sido o agente beneficiado nos 5 (cinco) anos anteriores ao cometimento da infração, em acordo de não persecução penal, transação penal ou suspensão condicional do processo; e
+IV – nos crimes praticados no âmbito de violência doméstica ou familiar, ou praticados contra a mulher por razões da condição de sexo feminino, em favor do agressor.
+(...)
+§ 4º Para a homologação do acordo de não persecução penal, será realizada audiência na qual o juiz deverá verificar a sua voluntariedade, por meio da oitiva do investigado na presença do seu defensor, e sua legalidade.
+(...)
+§ 13. Cumprido integralmente o acordo de não persecução penal, o juízo competente decretará a extinção de punibilidade.`},
+cpp29:{g:"CPP",t:"Art. 29 – CPP",x:`Será admitida ação privada nos crimes de ação pública, se esta não for intentada no prazo legal, cabendo ao Ministério Público aditar a queixa, repudiá-la e oferecer denúncia substitutiva, intervir em todos os termos do processo, fornecer elementos de prova, interpor recurso e, a todo tempo, no caso de negligência do querelante, retomar a ação como parte principal.`},
+cpp30:{g:"CPP",t:"Art. 30 – CPP",x:`Ao ofendido ou a quem tenha qualidade para representá-lo caberá intentar a ação privada.`},
+cpp31:{g:"CPP",t:"Art. 31 – CPP",x:`No caso de morte do ofendido ou quando declarado ausente por decisão judicial, o direito de oferecer queixa ou prosseguir na ação passará ao cônjuge, ascendente, descendente ou irmão.`},
+cpp38:{g:"CPP",t:"Art. 38 – CPP",x:`Salvo disposição em contrário, o ofendido, ou seu representante legal, decairá no direito de queixa ou de representação, se não o exercer dentro do prazo de seis meses, contado do dia em que vier a saber quem é o autor do crime, ou, no caso do art. 29, do dia em que se esgotar o prazo para o oferecimento da denúncia.
+Parágrafo único. Verificar-se-á a decadência do direito de queixa ou representação, dentro do mesmo prazo, nos casos dos arts. 24, parágrafo único, e 31.`,n:"A regra dos 12 meses para casos de violência doméstica, citada em aula, decorre de alteração legislativa recente. Confira a redação atualizada deste artigo no site do Planalto."},
+cpp41:{g:"CPP",t:"Art. 41 – CPP",x:`A denúncia ou queixa conterá a exposição do fato criminoso, com todas as suas circunstâncias, a qualificação do acusado ou esclarecimentos pelos quais se possa identificá-lo, a classificação do crime e, quando necessário, o rol das testemunhas.`},
+cpp46:{g:"CPP",t:"Art. 46 – CPP",x:`O prazo para oferecimento da denúncia, estando o réu preso, será de 5 dias, contado da data em que o órgão do Ministério Público receber os autos do inquérito policial, e de 15 dias, se o réu estiver solto ou afiançado. No último caso, se houver devolução do inquérito à autoridade policial (art. 16), contar-se-á o prazo da data em que o órgão do Ministério Público receber novamente os autos.`},
+cpp48:{g:"CPP",t:"Art. 48 – CPP",x:`A queixa contra qualquer dos autores do crime obrigará ao processo de todos, e o Ministério Público velará pela sua indivisibilidade.`},
+cpp49:{g:"CPP",t:"Art. 49 – CPP",x:`A renúncia ao exercício do direito de queixa, em relação a um dos autores do crime, a todos se estenderá.`},
+cpp51:{g:"CPP",t:"Art. 51 – CPP",x:`O perdão concedido a um dos querelados aproveitará a todos, sem que produza, todavia, efeito em relação ao que o recusar.`},
+cpp58:{g:"CPP",t:"Art. 58 – CPP",x:`Concedido o perdão, mediante declaração expressa nos autos, o querelado será intimado a dizer, dentro de três dias, se o aceita, devendo, ao mesmo tempo, ser cientificado de que o seu silêncio importará aceitação.`},
+cpp60:{g:"CPP",t:"Art. 60 – CPP",x:`Nos casos em que somente se procede mediante queixa, considerar-se-á perempta a ação penal:
+I – quando, iniciada esta, o querelante deixar de promover o andamento do processo durante 30 dias seguidos;
+II – quando, falecendo o querelante, ou sobrevindo sua incapacidade, não comparecer em juízo, para prosseguir no processo, dentro do prazo de 60 (sessenta) dias, qualquer das pessoas a quem couber fazê-lo, ressalvado o disposto no art. 36;
+III – quando o querelante deixar de comparecer, sem motivo justificado, a qualquer ato do processo a que deva estar presente, ou deixar de formular o pedido de condenação nas alegações finais;
+IV – quando, sendo o querelante pessoa jurídica, esta se extinguir sem deixar sucessor.`},
+cpp69:{g:"CPP",t:"Art. 69 – CPP",x:`Determinará a competência jurisdicional:
+I – o lugar da infração;
+II – o domicílio ou residência do réu;
+III – a natureza da infração;
+IV – a distribuição;
+V – a conexão ou continência;
+VI – a prevenção;
+VII – a prerrogativa de função.`},
+cpp70:{g:"CPP",t:"Art. 70 – CPP",x:`A competência será, de regra, determinada pelo lugar em que se consumar a infração, ou, no caso de tentativa, pelo lugar em que for praticado o último ato de execução.
+§ 1º Se, iniciada a execução no território nacional, a infração se consumar fora dele, a competência será determinada pelo lugar em que tiver sido praticado, no Brasil, o último ato de execução.
+§ 2º Quando o último ato de execução for praticado fora do território nacional, será competente o juiz do lugar em que o crime, embora parcialmente, tenha produzido ou devia produzir seu resultado.
+§ 3º Quando incerto o limite territorial entre duas ou mais jurisdições, ou quando incerta a jurisdição por ter sido a infração consumada ou tentada nas divisas de duas ou mais jurisdições, a competência firmar-se-á pela prevenção.
+§ 4º Nos crimes previstos no art. 171 do Código Penal, quando praticados mediante depósito, mediante emissão de cheques sem suficiente provisão de fundos em poder do sacado ou com o pagamento frustrado ou mediante transferência de valores, a competência será definida pelo local do domicílio da vítima, e, em caso de pluralidade de vítimas, a competência firmar-se-á pela prevenção.`},
+cpp71:{g:"CPP",t:"Art. 71 – CPP",x:`Tratando-se de infração continuada ou permanente, praticada em território de duas ou mais jurisdições, a competência firmar-se-á pela prevenção.`},
+cpp72:{g:"CPP",t:"Art. 72 – CPP",x:`Não sendo conhecido o lugar da infração, a competência regular-se-á pelo domicílio ou residência do réu.
+§ 1º Se o réu tiver mais de uma residência, a competência firmar-se-á pela prevenção.
+§ 2º Se o réu não tiver residência certa ou for ignorado o seu paradeiro, será competente o juiz que primeiro tomar conhecimento do fato.`},
+cpp73:{g:"CPP",t:"Art. 73 – CPP",x:`Nos casos de exclusiva ação privada, o querelante poderá preferir o foro de domicílio ou da residência do réu, ainda quando conhecido o lugar da infração.`},
+cpp76:{g:"CPP",t:"Art. 76 – CPP",x:`A competência será determinada pela conexão:
+I – se, ocorrendo duas ou mais infrações, houverem sido praticadas, ao mesmo tempo, por várias pessoas reunidas, ou por várias pessoas em concurso, embora diverso o tempo e o lugar, ou por várias pessoas, umas contra as outras;
+II – se, no mesmo caso, houverem sido umas praticadas para facilitar ou ocultar as outras, ou para conseguir impunidade ou vantagem em relação a qualquer delas;
+III – quando a prova de uma infração ou de qualquer de suas circunstâncias elementares influir na prova de outra infração.`},
+cpp77:{g:"CPP",t:"Art. 77 – CPP",x:`A competência será determinada pela continência quando:
+I – duas ou mais pessoas forem acusadas pela mesma infração;
+II – no caso de infração cometida nas condições previstas nos arts. 51, § 1º, 53, segunda parte, e 54 do Código Penal.`,n:"Após a reforma da Parte Geral do CP (1984), os dispositivos correspondem aos arts. 70, 73 (segunda parte) e 74 do Código Penal."},
+cpp78:{g:"CPP",t:"Art. 78 – CPP",x:`Na determinação da competência por conexão ou continência, serão observadas as seguintes regras:
+I – no concurso entre a competência do júri e a de outro órgão da jurisdição comum, prevalecerá a competência do júri;
+II – no concurso de jurisdições da mesma categoria:
+a) preponderará a do lugar da infração, à qual for cominada a pena mais grave;
+b) prevalecerá a do lugar em que houver ocorrido o maior número de infrações, se as respectivas penas forem de igual gravidade;
+c) firmar-se-á a competência pela prevenção, nos outros casos;
+III – no concurso de jurisdições de diversas categorias, predominará a de maior graduação;
+IV – no concurso entre a jurisdição comum e a especial, prevalecerá esta.`},
+cpp79:{g:"CPP",t:"Art. 79 – CPP",x:`A conexão e a continência importarão unidade de processo e julgamento, salvo:
+I – no concurso entre a jurisdição comum e a militar;
+II – no concurso entre a jurisdição comum e a do juízo de menores.
+§ 1º Cessará, em qualquer caso, a unidade do processo, se, em relação a algum co-réu, sobrevier o caso previsto no art. 152.
+§ 2º A unidade do processo não importará a do julgamento, se houver co-réu foragido que não possa ser julgado à revelia, ou ocorrer a hipótese do art. 461.`},
+cpp80:{g:"CPP",t:"Art. 80 – CPP",x:`Será facultativa a separação dos processos quando as infrações tiverem sido praticadas em circunstâncias de tempo ou de lugar diferentes, ou, quando pelo excessivo número de acusados e para não lhes prolongar a prisão provisória, ou por outro motivo relevante, o juiz reputar conveniente a separação.`},
+cpp81:{g:"CPP",t:"Art. 81 – CPP",x:`Verificada a reunião dos processos por conexão ou continência, ainda que no processo da sua competência própria venha o juiz ou tribunal a proferir sentença absolutória ou que desclassifique a infração para outra que não se inclua na sua competência, continuará competente em relação aos demais processos.
+Parágrafo único. Reconhecida inicialmente ao júri a competência por conexão ou continência, o juiz, se vier a desclassificar a infração ou impronunciar ou absolver o acusado, de maneira que exclua a competência do júri, remeterá o processo ao juízo competente.`},
+cpp83:{g:"CPP",t:"Art. 83 – CPP",x:`Verificar-se-á a competência por prevenção toda vez que, concorrendo dois ou mais juízes igualmente competentes ou com jurisdição cumulativa, um deles tiver antecedido aos outros na prática de algum ato do processo ou de medida a este relativa, ainda que anterior ao oferecimento da denúncia ou da queixa (arts. 70, § 3º, 71, 72, § 2º, e 78, II, c).`},
+cpp84:{g:"CPP",t:"Art. 84 – CPP (caput)",x:`A competência pela prerrogativa de função é do Supremo Tribunal Federal, do Superior Tribunal de Justiça, dos Tribunais Regionais Federais e Tribunais de Justiça dos Estados e do Distrito Federal, relativamente às pessoas que devam responder perante eles por crimes comuns e de responsabilidade.`,n:"Os §§ 1º e 2º (foro após a cessação do cargo e para improbidade) foram declarados inconstitucionais pelo STF (ADI 2.797)."},
+cpp88:{g:"CPP",t:"Art. 88 – CPP",x:`No processo por crimes praticados fora do território brasileiro, será competente o juízo da Capital do Estado onde houver por último residido o acusado. Se este nunca tiver residido no Brasil, será competente o juízo da Capital da República.`},
+cpp89:{g:"CPP",t:"Art. 89 – CPP",x:`Os crimes cometidos em qualquer embarcação nas águas territoriais da República, ou nos rios e lagos fronteiriços, bem como a bordo de embarcações nacionais, em alto-mar, serão processados e julgados pela justiça do primeiro porto brasileiro em que tocar a embarcação, após o crime, ou, quando se afastar do País, pela do último em que houver tocado.`},
+cpp90:{g:"CPP",t:"Art. 90 – CPP",x:`Os crimes praticados a bordo de aeronave nacional, dentro do espaço aéreo correspondente ao território brasileiro, ou ao alto-mar, ou a bordo de aeronave estrangeira, dentro do espaço aéreo correspondente ao território nacional, serão processados e julgados pela justiça da comarca em cujo território se verificar o pouso após o crime, ou pela da comarca de onde houver partido a aeronave.`},
+cpp155:{g:"CPP",t:"Art. 155 – CPP",x:`O juiz formará sua convicção pela livre apreciação da prova produzida em contraditório judicial, não podendo fundamentar sua decisão exclusivamente nos elementos informativos colhidos na investigação, ressalvadas as provas cautelares, não repetíveis e antecipadas.`},
+cpp158:{g:"CPP",t:"Art. 158 – CPP (caput)",x:`Quando a infração deixar vestígios, será indispensável o exame de corpo de delito, direto ou indireto, não podendo supri-lo a confissão do acusado.`},
+cpp184:{g:"CPP",t:"Art. 184 – CPP",x:`Salvo o caso de exame de corpo de delito, o juiz ou a autoridade policial negará a perícia requerida pelas partes, quando não for necessária ao esclarecimento da verdade.`},
+cpp257:{g:"CPP",t:"Art. 257 – CPP",x:`Ao Ministério Público cabe:
+I – promover, privativamente, a ação penal pública, na forma estabelecida neste Código; e
+II – fiscalizar a execução da lei.`},
+cpp385:{g:"CPP",t:"Art. 385 – CPP",x:`Nos crimes de ação pública, o juiz poderá proferir sentença condenatória, ainda que o Ministério Público tenha opinado pela absolvição, bem como reconhecer agravantes, embora nenhuma tenha sido alegada.`},
+cpp564:{g:"CPP",t:"Art. 564, III, \"d\" – CPP",x:`A nulidade ocorrerá nos seguintes casos: (...)
+III – por falta das fórmulas ou dos termos seguintes: (...)
+d) a intervenção do Ministério Público em todos os termos da ação por ele intentada e nos da intentada pela parte ofendida, quando se tratar de crime de ação pública;`},
+cpp576:{g:"CPP",t:"Art. 576 – CPP",x:`O Ministério Público não poderá desistir de recurso que haja interposto.`},
+
+cf5:{g:"CF/88",t:"Art. 5º, XXXVIII, XLV e LIX – CF",x:`XXXVIII – é reconhecida a instituição do júri, com a organização que lhe der a lei, assegurados:
+a) a plenitude de defesa;
+b) o sigilo das votações;
+c) a soberania dos veredictos;
+d) a competência para o julgamento dos crimes dolosos contra a vida;
+XLV – nenhuma pena passará da pessoa do condenado, podendo a obrigação de reparar o dano e a decretação do perdimento de bens ser, nos termos da lei, estendidas aos sucessores e contra eles executadas, até o limite do valor do patrimônio transferido;
+LIX – será admitida ação privada nos crimes de ação pública, se esta não for intentada no prazo legal;`},
+cf29:{g:"CF/88",t:"Art. 29, X – CF",x:`X – julgamento do Prefeito perante o Tribunal de Justiça;`},
+cf96:{g:"CF/88",t:"Art. 96, III – CF",x:`Compete privativamente: (...)
+III – aos Tribunais de Justiça julgar os juízes estaduais e do Distrito Federal e Territórios, bem como os membros do Ministério Público, nos crimes comuns e de responsabilidade, ressalvada a competência da Justiça Eleitoral.`},
+cf98:{g:"CF/88",t:"Art. 98, I – CF",x:`A União, no Distrito Federal e nos Territórios, e os Estados criarão:
+I – juizados especiais, providos por juízes togados, ou togados e leigos, competentes para a conciliação, o julgamento e a execução de causas cíveis de menor complexidade e infrações penais de menor potencial ofensivo, mediante os procedimentos oral e sumariíssimo, permitidos, nas hipóteses previstas em lei, a transação e o julgamento de recursos por turmas de juízes de primeiro grau;`},
+cf102:{g:"CF/88",t:"Art. 102, I, \"b\" e \"c\" – CF",x:`Compete ao Supremo Tribunal Federal, precipuamente, a guarda da Constituição, cabendo-lhe:
+I – processar e julgar, originariamente: (...)
+b) nas infrações penais comuns, o Presidente da República, o Vice-Presidente, os membros do Congresso Nacional, seus próprios Ministros e o Procurador-Geral da República;
+c) nas infrações penais comuns e nos crimes de responsabilidade, os Ministros de Estado e os Comandantes da Marinha, do Exército e da Aeronáutica, ressalvado o disposto no art. 52, I, os membros dos Tribunais Superiores, os do Tribunal de Contas da União e os chefes de missão diplomática de caráter permanente;`},
+cf105:{g:"CF/88",t:"Art. 105, I, \"a\" – CF",x:`Compete ao Superior Tribunal de Justiça:
+I – processar e julgar, originariamente:
+a) nos crimes comuns, os Governadores dos Estados e do Distrito Federal, e, nestes e nos de responsabilidade, os desembargadores dos Tribunais de Justiça dos Estados e do Distrito Federal, os membros dos Tribunais de Contas dos Estados e do Distrito Federal, os dos Tribunais Regionais Federais, dos Tribunais Regionais Eleitorais e do Trabalho, os membros dos Conselhos ou Tribunais de Contas dos Municípios e os do Ministério Público da União que oficiem perante tribunais;`},
+cf108:{g:"CF/88",t:"Art. 108, I, \"a\" – CF",x:`Compete aos Tribunais Regionais Federais:
+I – processar e julgar, originariamente:
+a) os juízes federais da área de sua jurisdição, incluídos os da Justiça Militar e da Justiça do Trabalho, nos crimes comuns e de responsabilidade, e os membros do Ministério Público da União, ressalvada a competência da Justiça Eleitoral;`},
+cf109:{g:"CF/88",t:"Art. 109, IV – CF",x:`Aos juízes federais compete processar e julgar: (...)
+IV – os crimes políticos e as infrações penais praticadas em detrimento de bens, serviços ou interesse da União ou de suas entidades autárquicas ou empresas públicas, excluídas as contravenções e ressalvada a competência da Justiça Militar e da Justiça Eleitoral;`},
+cf125:{g:"CF/88",t:"Art. 125, § 1º – CF",x:`Os Estados organizarão sua Justiça, observados os princípios estabelecidos nesta Constituição.
+§ 1º A competência dos tribunais será definida na Constituição do Estado, sendo a lei de organização judiciária de iniciativa do Tribunal de Justiça.`},
+cf127:{g:"CF/88",t:"Art. 127, § 1º – CF",x:`§ 1º São princípios institucionais do Ministério Público a unidade, a indivisibilidade e a independência funcional.`},
+cf129:{g:"CF/88",t:"Art. 129, I – CF",x:`São funções institucionais do Ministério Público:
+I – promover, privativamente, a ação penal pública, na forma da lei;`},
+cf144:{g:"CF/88",t:"Art. 144 – CF (caput e § 4º)",x:`A segurança pública, dever do Estado, direito e responsabilidade de todos, é exercida para a preservação da ordem pública e da incolumidade das pessoas e do patrimônio, através dos seguintes órgãos:
+I – polícia federal;
+II – polícia rodoviária federal;
+III – polícia ferroviária federal;
+IV – polícias civis;
+V – polícias militares e corpos de bombeiros militares;
+VI – polícias penais federal, estaduais e distrital.
+(...)
+§ 4º Às polícias civis, dirigidas por delegados de polícia de carreira, incumbem, ressalvada a competência da União, as funções de polícia judiciária e a apuração de infrações penais, exceto as militares.`,n:"Redação conhecida até meados de 2026. Se houver emenda constitucional posterior sobre segurança pública, confira o texto atualizado."},
+
+cp7:{g:"Código Penal",t:"Art. 7º, § 3º – CP",x:`§ 3º A lei brasileira aplica-se também ao crime cometido por estrangeiro contra brasileiro fora do Brasil, se, reunidas as condições previstas no parágrafo anterior:
+a) não foi pedida ou foi negada a extradição;
+b) houve requisição do Ministro da Justiça.`},
+cp10:{g:"Código Penal",t:"Art. 10 – CP",x:`O dia do começo inclui-se no cômputo do prazo. Contam-se os dias, os meses e os anos pelo calendário comum.`},
+cp14:{g:"Código Penal",t:"Art. 14, I – CP",x:`Diz-se o crime:
+I – consumado, quando nele se reúnem todos os elementos de sua definição legal;`},
+cp70:{g:"Código Penal",t:"Art. 70 – CP (caput)",x:`Quando o agente, mediante uma só ação ou omissão, pratica dois ou mais crimes, idênticos ou não, aplica-se-lhe a mais grave das penas cabíveis ou, se iguais, somente uma delas, mas aumentada, em qualquer caso, de um sexto até metade. As penas aplicam-se, entretanto, cumulativamente, se a ação ou omissão é dolosa e os crimes concorrentes resultam de desígnios autônomos, consoante o disposto no artigo anterior.`},
+cp100:{g:"Código Penal",t:"Art. 100 – CP (caput e § 1º)",x:`A ação penal é pública, salvo quando a lei expressamente a declara privativa do ofendido.
+§ 1º A ação pública é promovida pelo Ministério Público, dependendo, quando a lei o exige, de representação do ofendido ou de requisição do Ministro da Justiça.`},
+cp103:{g:"Código Penal",t:"Art. 103 – CP",x:`Salvo disposição expressa em contrário, o ofendido decai do direito de queixa ou de representação se não o exerce dentro do prazo de 6 (seis) meses, contado do dia em que veio a saber quem é o autor do crime, ou, no caso do § 3º do art. 100 deste Código, do dia em que se esgota o prazo para oferecimento da denúncia.`},
+cp107:{g:"Código Penal",t:"Art. 107, IV e V – CP",x:`Extingue-se a punibilidade: (...)
+IV – pela prescrição, decadência ou perempção;
+V – pela renúncia do direito de queixa ou pelo perdão aceito, nos crimes de ação privada;`},
+cp137:{g:"Código Penal",t:"Art. 137 – CP (caput)",x:`Participar de rixa, salvo para separar os contendores:
+Pena – detenção, de quinze dias a dois meses, ou multa.`},
+cp236:{g:"Código Penal",t:"Art. 236 – CP",x:`Contrair casamento, induzindo em erro essencial o outro contraente, ou ocultando-lhe impedimento que não seja casamento anterior:
+Pena – detenção, de seis meses a dois anos.
+Parágrafo único. A ação penal depende de queixa do contraente enganado e não pode ser intentada senão depois de transitar em julgado a sentença que, por motivo de erro ou impedimento, anule o casamento.`},
+
+jec61:{g:"Lei 9.099/95",t:"Art. 61 – Lei 9.099/95",x:`Consideram-se infrações penais de menor potencial ofensivo, para os efeitos desta Lei, as contravenções penais e os crimes a que a lei comine pena máxima não superior a 2 (dois) anos, cumulada ou não com multa.`},
+jec63:{g:"Lei 9.099/95",t:"Art. 63 – Lei 9.099/95",x:`A competência do Juizado será determinada pelo lugar em que foi praticada a infração penal.`},
+jec69:{g:"Lei 9.099/95",t:"Art. 69 – Lei 9.099/95 (caput)",x:`A autoridade policial que tomar conhecimento da ocorrência lavrará termo circunstanciado e o encaminhará imediatamente ao Juizado, com o autor do fato e a vítima, providenciando-se as requisições dos exames periciais necessários.`},
+jec74:{g:"Lei 9.099/95",t:"Art. 74 – Lei 9.099/95 (caput)",x:`A composição dos danos civis será reduzida a escrito e, homologada pelo Juiz mediante sentença irrecorrível, terá eficácia de título a ser executado no juízo civil competente.`},
+jec76:{g:"Lei 9.099/95",t:"Art. 76 – Lei 9.099/95 (caput)",x:`Havendo representação ou tratando-se de crime de ação penal pública incondicionada, não sendo caso de arquivamento, o Ministério Público poderá propor a aplicação imediata de pena restritiva de direitos ou multas, a ser especificada na proposta.`},
+jec89:{g:"Lei 9.099/95",t:"Art. 89 – Lei 9.099/95 (caput)",x:`Nos crimes em que a pena mínima cominada for igual ou inferior a um ano, abrangidas ou não por esta Lei, o Ministério Público, ao oferecer a denúncia, poderá propor a suspensão do processo, por dois a quatro anos, desde que o acusado não esteja sendo processado ou não tenha sido condenado por outro crime, presentes os demais requisitos que autorizariam a suspensão condicional da pena (art. 77 do Código Penal).`},
+jec90a:{g:"Lei 9.099/95",t:"Art. 90-A – Lei 9.099/95",x:`As disposições desta Lei não se aplicam no âmbito da Justiça Militar.`},
+lmp16:{g:"Outras leis",t:"Art. 16 – Lei 11.340/06 (Maria da Penha)",x:`Nas ações penais públicas condicionadas à representação da ofendida de que trata esta Lei, só será admitida a renúncia à representação perante o juiz, em audiência especialmente designada com tal finalidade, antes do recebimento da denúncia e ouvido o Ministério Público.`},
+ld51:{g:"Outras leis",t:"Art. 51 – Lei 11.343/06 (Drogas)",x:`O inquérito policial será concluído no prazo de 30 (trinta) dias, se o indiciado estiver preso, e de 90 (noventa) dias, quando solto.
+Parágrafo único. Os prazos a que se refere este artigo podem ser duplicados pelo juiz, ouvido o Ministério Público, mediante pedido justificado da autoridade de polícia judiciária.`},
+ld52:{g:"Outras leis",t:"Art. 52, I – Lei 11.343/06 (Drogas)",x:`Findos os prazos a que se refere o art. 51 desta Lei, a autoridade de polícia judiciária, remetendo os autos do inquérito ao juízo:
+I – relatará sumariamente as circunstâncias do fato, justificando as razões que a levaram à classificação do delito, indicando a quantidade e natureza da substância ou do produto apreendido, o local e as condições em que se desenvolveu a ação criminosa, as circunstâncias da prisão, a conduta, a qualificação e os antecedentes do agente;`},
+l12830:{g:"Outras leis",t:"Art. 2º – Lei 12.830/2013 (trechos)",x:`As funções de polícia judiciária e a apuração de infrações penais exercidas pelo delegado de polícia são de natureza jurídica, essenciais e exclusivas de Estado.
+§ 1º Ao delegado de polícia, na qualidade de autoridade policial, cabe a condução da investigação criminal por meio de inquérito policial ou outro procedimento previsto em lei, que tem como objetivo a apuração das circunstâncias, da materialidade e da autoria das infrações penais.
+(...)
+§ 4º O inquérito policial ou outro procedimento previsto em lei em curso somente poderá ser avocado ou redistribuído por superior hierárquico, mediante despacho fundamentado, por motivo de interesse público ou nas hipóteses de inobservância dos procedimentos previstos em regulamento da corporação que prejudique a eficácia da investigação.
+(...)
+§ 6º O indiciamento, privativo do delegado de polícia, dar-se-á por ato fundamentado, mediante análise técnico-jurídica do fato, que deverá indicar a autoria, materialidade e suas circunstâncias.`},
+oab7:{g:"Outras leis",t:"Art. 7º, XIV e XXI, §§ 10 a 12 – Lei 8.906/94 (Estatuto da OAB)",x:`São direitos do advogado: (...)
+XIV – examinar, em qualquer instituição responsável por conduzir investigação, mesmo sem procuração, autos de flagrante e de investigações de qualquer natureza, findos ou em andamento, ainda que conclusos à autoridade, podendo copiar peças e tomar apontamentos, em meio físico ou digital; (...)
+XXI – assistir a seus clientes investigados durante a apuração de infrações, sob pena de nulidade absoluta do respectivo interrogatório ou depoimento e, subsequentemente, de todos os elementos investigatórios e probatórios dele decorrentes ou derivados, direta ou indiretamente, podendo, inclusive, no curso da respectiva apuração:
+a) apresentar razões e quesitos; (...)
+§ 10. Nos autos sujeitos a sigilo, deve o advogado apresentar procuração para o exercício dos direitos de que trata o inciso XIV.
+§ 11. No caso previsto no inciso XIV, a autoridade competente poderá delimitar o acesso do advogado aos elementos de prova relacionados a diligências em andamento e ainda não documentados nos autos, quando houver risco de comprometimento da eficiência, da eficácia ou da finalidade das diligências.
+§ 12. A inobservância aos direitos estabelecidos no inciso XIV, o fornecimento incompleto de autos ou o fornecimento de autos em que houve a retirada de peças já incluídas no caderno investigativo implicará responsabilização criminal e funcional por abuso de autoridade do responsável que impedir o acesso do advogado com o intuito de prejudicar o exercício da defesa, sem prejuízo do direito subjetivo do advogado de requerer acesso aos autos ao juiz competente.`},
+
+sv14:{g:"Súmulas",t:"Súmula Vinculante 14 – STF",x:`É direito do defensor, no interesse do representado, ter acesso amplo aos elementos de prova que, já documentados em procedimento investigatório realizado por órgão com competência de polícia judiciária, digam respeito ao exercício do direito de defesa.`},
+sv45:{g:"Súmulas",t:"Súmula Vinculante 45 – STF",x:`A competência constitucional do Tribunal do Júri prevalece sobre o foro por prerrogativa de função estabelecido exclusivamente pela constituição estadual.`},
+s451:{g:"Súmulas",t:"Súmula 451 – STF",x:`A competência especial por prerrogativa de função não se estende ao crime cometido após a cessação definitiva do exercício funcional.`},
+s524:{g:"Súmulas",t:"Súmula 524 – STF",x:`Arquivado o inquérito policial, por despacho do juiz, a requerimento do promotor de justiça, não pode a ação penal ser iniciada, sem novas provas.`},
+s702:{g:"Súmulas",t:"Súmula 702 – STF",x:`A competência do Tribunal de Justiça para julgar prefeitos restringe-se aos crimes de competência da Justiça comum estadual; nos demais casos, a competência originária caberá ao respectivo tribunal de segundo grau.`},
+s704:{g:"Súmulas",t:"Súmula 704 – STF",x:`Não viola as garantias do juiz natural, da ampla defesa e do devido processo legal a atração por continência ou conexão do processo do co-réu ao foro por prerrogativa de função de um dos denunciados.`},
+s90:{g:"Súmulas",t:"Súmula 90 – STJ",x:`Compete à Justiça Estadual Militar processar e julgar o policial militar pela prática do crime militar, e à Comum pela prática do crime comum simultâneo àquele.`},
+s122:{g:"Súmulas",t:"Súmula 122 – STJ",x:`Compete à Justiça Federal o processo e julgamento unificado dos crimes conexos de competência federal e estadual, não se aplicando a regra do art. 78, II, "a", do Código de Processo Penal.`},
+s234:{g:"Súmulas",t:"Súmula 234 – STJ",x:`A participação de membro do Ministério Público na fase investigatória criminal não acarreta o seu impedimento ou suspeição para o oferecimento da denúncia.`}
+};
+
+const CARDS = [
+["m0","O que é persecução penal e quais são suas etapas?","É a apuração do crime. Duas etapas sucessivas: investigação (principal instrumento: IP) e processo (perante o Judiciário)."],
+["m0","Qual princípio rege a lei processual no espaço?","Territorialidade absoluta (art. 1º, CPP). Mesmo a carta rogatória é cumprida pela lei processual brasileira."],
+["m0","O que diz o princípio tempus regit actum?","Cada ato processual é regido pela lei vigente no momento em que é praticado; atos anteriores continuam válidos (art. 2º, CPP)."],
+["m0","Lei híbrida com parte penal maléfica: o que acontece?","A parte penal não retroage e a parte processual também não se aplica àquele crime: todo o processo segue a lei antiga."],
+["m0","Qual lei rege o prazo de recurso?","A vigente quando a decisão é proferida (quando surge a pretensão de recorrer)."],
+["m0","O que admite o art. 3º do CPP?","Interpretação extensiva, aplicação analógica e suplemento dos princípios gerais do direito."],
+["m0","Característica central do sistema acusatório?","Separação das funções de acusar, defender e julgar, com imparcialidade do juiz; sem hierarquia abstrata entre provas."],
+["m0","Juiz das garantias investiga?","Não. Controla a legalidade da investigação e decide medidas sob reserva de jurisdição; em princípio não preside o processo."],
+["m1","Natureza jurídica do IP?","Procedimento administrativo de caráter informativo. Não é processo: não há partes nem réu."],
+["m1","O que é opinio delicti?","A opinião do titular da ação penal sobre iniciar ou não o processo, formada com base no IP."],
+["m1","O delegado pode arquivar o IP?","Não (art. 17, CPP). O IP é indisponível."],
+["m1","Delegado nega instaurar IP a pedido da vítima. Cabe o quê?","Recurso administrativo ao Chefe de Polícia (art. 5º, §2º, CPP)."],
+["m1","O delegado pode negar o exame de corpo de delito?","Não, se a infração deixou vestígios (art. 184, CPP)."],
+["m1","Requisição do MP ao delegado: ele pode negar?","Não, deve cumprir (art. 13, II), sem que isso signifique hierarquia."],
+["m1","O que garante a Súmula Vinculante 14?","Acesso amplo do defensor aos elementos de prova JÁ DOCUMENTADOS no procedimento investigatório."],
+["m1","Medidas da defesa se o acesso aos autos for negado?","Petição ao juiz das garantias ou mandado de segurança."],
+["m1","IP aparece na certidão de antecedentes?","Não (art. 20, parágrafo único, CPP)."],
+["m1","Quem tem defesa técnica obrigatória no IP (art. 14-A)?","Integrantes das forças de segurança investigados por uso de força letal no exercício da função."],
+["m1","O MP pode investigar? Com que fundamento?","Sim, por PIC. STF: Teoria dos Poderes Implícitos."],
+["m1","Promotor que investigou pode denunciar?","Sim. Súmula 234 do STJ: não fica impedido nem suspeito."],
+["m1","O IP pode fundamentar sozinho a condenação?","Não (art. 155). Exceção: provas cautelares, não repetíveis e antecipadas (elementos migratórios)."],
+["m1","Vícios do IP contaminam o processo?","Não. São endoprocedimentais, porque o IP é dispensável."],
+["m1","Prazo do IP: delegado estadual, preso e solto?","Preso: 10 + 15 dias. Solto: 30 dias, prorrogáveis quantas vezes forem necessárias."],
+["m1","Prazo do IP na Lei de Drogas?","Preso: 30 dias; solto: 90 dias — ambos duplicáveis pelo juiz, ouvido o MP."],
+["m1","Perda do prazo do IP com investigado preso gera soltura automática?","Não. O juiz analisa concretamente os motivos da demora."],
+["m1","Notícia-crime anônima: o que o delegado deve fazer?","Aferir a plausibilidade antes (ex.: VPI) e só então baixar portaria."],
+["m1","Requerimento, requisição e delação: quem usa cada um?","Requerimento: vítima. Requisição: MP/juiz. Delação: qualquer pessoa do povo (só ação pública incondicionada)."],
+["m1","O que pode o MP fazer ao receber o IP?","Denunciar (ou propor ANPP), requerer diligências imprescindíveis (art. 16) ou promover o arquivamento (art. 28)."],
+["m1","Juiz indefere diligência imprescindível pedida pelo MP. Cabe o quê?","Correição parcial."],
+["m1","Prazo da vítima contra o arquivamento?","30 dias, à instância de revisão do MP (art. 28, §1º)."],
+["m1","Arquivamento faz coisa julgada material?","Em regra não: com novas provas cabe denúncia (Súm. 524). Faz quando baseado na certeza da atipicidade ou da extinção da punibilidade."],
+["m1","Indiciamento coercitivo e complexo?","Coercitivo: decorre do flagrante. Complexo: exige autorização do tribunal (autoridade com foro)."],
+["m2","Para Tornaghi, toda ação penal é…","Pública, pela natureza do bem jurídico. Muda apenas a iniciativa."],
+["m2","Quais os espaços de consenso (não obrigatoriedade)?","ANPP (art. 28-A), transação penal (art. 76, Lei 9.099/95) e colaboração premiada (Lei 12.850/13)."],
+["m2","MP pede absolvição nas alegações finais. O juiz pode condenar?","Sim (art. 385). O MP opina, não requer; e isso não é desistência."],
+["m2","MP pode desistir de recurso interposto?","Não (art. 576)."],
+["m2","Ação pública é divisível ou indivisível?","Tribunais Superiores: divisível. Doutrina majoritária: indivisível."],
+["m2","Natureza jurídica da representação?","Condição de procedibilidade."],
+["m2","Prazo da representação e como se conta?","6 meses do conhecimento da autoria; decadencial; inclui o dia do começo (art. 10, CP)."],
+["m2","Até quando cabe retratação da representação?","Regra: até o oferecimento da denúncia (art. 25). Violência doméstica: até o recebimento, em audiência específica."],
+["m2","Cabe retratação da retratação?","Sim, para a maioria, desde que dentro do prazo decadencial."],
+["m2","Quem herda o direito de representar (morte/ausência)?","CADI: cônjuge (e companheiro), ascendentes, descendentes, irmãos — rol preferencial e taxativo."],
+["m2","Requisição do MJ: destinatário e prazo?","Destinatário único: chefe do MP. Sem prazo decadencial (limite: prescrição)."],
+["m2","A requisição do MJ é retratável?","Divergência: Nucci (sim, até a denúncia) × Tourinho Filho (não). Tribunais não pacificaram."],
+["m2","A requisição do MJ obriga o MP a denunciar?","Não, por causa da independência funcional (art. 127, §1º, CF)."],
+["m2","Querelante, querelado e queixa-crime são…","Vítima, réu e petição inicial da ação privada."],
+["m2","Renúncia × perdão?","Renúncia: antes da ação, unilateral, irretratável. Perdão: durante a ação, bilateral (silêncio em 3 dias = aceita)."],
+["m2","Hipóteses de perempção?","30 dias sem andamento; sucessor não se habilita em 60 dias; falta injustificada a ato ou não pedir condenação; PJ extinta sem sucessor (art. 60)."],
+["m2","Vítima processa só um dos autores, de propósito. Consequência?","Renúncia tácita que se estende a todos: extinção da punibilidade de todos."],
+["m2","O MP pode incluir corréu na ação exclusivamente privada?","Não. Só a vítima pode aditar para incluir."],
+["m2","Única ação privada personalíssima e seu prazo?","Art. 236, CP. 6 meses do trânsito em julgado da sentença cível que anula o casamento."],
+["m2","Quando cabe a ação privada subsidiária da pública?","Só diante da inércia do MP no prazo (5 dias preso / 15 solto). Prazo da vítima: 6 meses após o fim do prazo do MP."],
+["m2","Papel do MP na ação subsidiária?","Interveniente adesivo obrigatório (art. 564), com os poderes do art. 29."],
+["m3","Competência é…","A medida da jurisdição: a quantidade de poder conferida por lei a um juiz ou tribunal."],
+["m3","Competência da Justiça Estadual é…","Residual."],
+["m3","Na Justiça Militar cabem ANPP e Lei 9.099/95?","Não (art. 90-A; STM quanto ao ANPP)."],
+["m3","Na Justiça Eleitoral cabem ANPP e Lei 9.099/95?","Sim."],
+["m3","Regra geral de competência territorial?","Teoria do resultado: local da consumação (art. 70)."],
+["m3","Quando se aplica a teoria da ação?","Crimes tentados, JECRIM (art. 63) e Júri (STJ — esboço do resultado)."],
+["m3","Teoria da ubiquidade se aplica a…","Crimes à distância (ação no Brasil e resultado no exterior, ou vice-versa)."],
+["m3","Competência no estelionato por Pix/transferência?","Domicílio da vítima; várias vítimas → prevenção (art. 70, §4º)."],
+["m3","Atos do juiz das garantias geram prevenção?","Não."],
+["m3","Na ação privada a vítima pode escolher o domicílio do réu?","Sim (art. 73), mas não na ação privada subsidiária da pública."],
+["m3","Crime em voo nacional: qual o foro?","1º local de pouso após o delito."],
+["m3","Crime no estrangeiro: qual o foro?","Capital do estado onde residiu por último; se nunca residiu, Brasília (art. 88)."],
+["m3","Requisitos do foro por prerrogativa (AP 937)?","Temporal (durante o cargo) + temático (relacionado às funções)."],
+["m3","CE pode dar foro a Defensores Públicos?","Não, por violar a simetria (a CF não dá foro à DPU e à AGU)."],
+["m3","Foro só na Constituição Estadual × Júri?","Prevalece o Júri (SV 45)."],
+["m3","Prefeito comete crime eleitoral. Quem julga?","O TRE (Súm. 702/STF)."],
+["m3","Governador comete crime eleitoral. Quem julga?","O STJ."],
+["m3","Ex-autoridade mantém o foro?","Regra: não ('ex é ex'). STF atual: nos crimes funcionais, mantém. Improbidade: nunca tem foro."],
+["m4","Conexão intersubjetiva por simultaneidade?","Vários crimes, vários agentes, mesmo tempo e lugar, SEM acordo prévio."],
+["m4","Conexão concursal?","Vários crimes, vários agentes, COM acordo prévio."],
+["m4","Acordo prévio para um único crime é conexão?","Não. É continência por cumulação subjetiva (art. 77, I)."],
+["m4","Rixa configura conexão por reciprocidade?","Não: é crime único plurissubjetivo."],
+["m4","Conexão lógica (teleológica)?","Um crime para facilitar/ocultar outro ou garantir impunidade/vantagem (art. 76, II)."],
+["m4","Conexão instrumental?","A prova de um crime influencia a prova de outro (art. 76, III)."],
+["m4","Continência objetiva?","Uma conduta gera dois ou mais crimes (concurso formal)."],
+["m4","Júri × juiz singular: quem prevalece?","O Júri (art. 78, I)."],
+["m4","Federal × Estadual: quem prevalece?","A Federal (Súm. 122/STJ)."],
+["m4","Critérios entre jurisdições da mesma categoria?","Pena mais grave → maior número de infrações → prevenção (art. 78, II)."],
+["m4","Separação obrigatória?","Comum × militar e comum × juízo de menores (art. 79)."],
+["m4","Perpetuação da jurisdição?","Se o juízo prevalente absolve ou desclassifica, continua competente para os conexos (art. 81)."]
+];
+
+const MCQ = [
+["m0","Uma lei nova aumenta a pena de um crime e, no mesmo texto, altera regras de intimação. Para um crime anterior a ela:",["Aplica-se só a parte processual, de imediato","Aplica-se toda a lei, por ser processual","Não se aplica nenhuma parte da lei","Aplica-se a parte penal e não a processual"],2,"Lei híbrida com parte penal maléfica: a parte penal não retroage e a processual também não se aplica àquele crime."],
+["m0","Sobre a carta rogatória estrangeira cumprida no Brasil:",["Segue a lei processual do país que a enviou","Segue a lei processual brasileira","O juiz escolhe a lei mais favorável","Segue tratado, sempre"],1,"Territorialidade absoluta: o ato é praticado conforme a lei processual brasileira."],
+["m1","O delegado concluiu que o fato é atípico. Ele pode:",["Arquivar o IP","Concluir e relatar o IP","Devolver à vítima","Encerrar sem relatório"],1,"O IP é indisponível; o delegado não arquiva (art. 17)."],
+["m1","A vítima pede ao delegado exame das lesões aparentes. O delegado:",["Pode negar por discricionariedade","Não pode negar","Só faz com ordem judicial","Depende de requisição do MP"],1,"Infração que deixa vestígios: o exame de corpo de delito não pode ser negado (art. 184)."],
+["m1","Sobre o acesso do advogado ao IP sigiloso:",["Alcança diligências futuras","É proibido até a denúncia","Alcança elementos já documentados","Depende de autorização do MP"],2,"SV 14: acesso a elementos já documentados (direito retrospectivo)."],
+["m1","Elementos que podem fundamentar sentença mesmo colhidos no IP:",["Depoimentos testemunhais","Provas cautelares, não repetíveis e antecipadas","Interrogatório policial","Relatório do delegado"],1,"Art. 155, parte final: são os elementos migratórios."],
+["m1","Prazo do IP, delegado federal, investigado preso:",["10 + 15 dias","15 + 15 dias","30 dias","30 + 30 dias"],1,"Delegado federal, preso: 15 + 15 dias."],
+["m1","O MP pede diligência imprescindível e o juiz indefere. Cabe:",["Apelação","Recurso em sentido estrito","Correição parcial","Habeas corpus"],2,"O indeferimento tumultua o procedimento: correição parcial."],
+["m1","Arquivamento por falta de provas. Surge prova nova antes da prescrição:",["Não cabe denúncia","Cabe denúncia (Súm. 524)","Só com autorização do STF","Só a vítima pode agir"],1,"O arquivamento por falta de provas não faz coisa julgada material."],
+["m1","Indiciamento que decorre da lavratura do flagrante:",["Direto","Indireto","Coercitivo","Complexo"],2,"Indiciamento coercitivo."],
+["m2","O MP opina pela absolvição em alegações finais:",["O juiz fica vinculado","Há desistência da ação","O juiz pode condenar","O processo é extinto"],2,"Art. 385; o MP opina, não requer."],
+["m2","Conhecimento da autoria em 10/03/2026. Termo final da representação:",["10/09/2026","09/09/2026","11/09/2026","10/03/2027"],1,"Inclui-se o dia do começo (art. 10, CP): termo final 09/09/2026."],
+["m2","Na violência doméstica, a retratação da representação é possível até:",["O oferecimento da denúncia","O recebimento da denúncia, em audiência","A sentença","A citação"],1,"Art. 16, Lei 11.340/06."],
+["m2","Sobre a requisição do Ministro da Justiça:",["Tem prazo de 6 meses","Vincula o MP","Destina-se ao delegado","Não tem prazo decadencial"],3,"Limite: prescrição. Destinatário: chefe do MP. Não vincula."],
+["m2","O perdão do ofendido:",["É unilateral","Exige aceitação; silêncio em 3 dias = aceitação","Ocorre antes da ação","É retratável a qualquer tempo"],1,"Art. 58: bilateralidade."],
+["m2","A vítima deixa de fora, de propósito, um dos autores na queixa:",["Só o omitido é beneficiado","Renúncia que se estende a todos","O MP adita para incluí-lo","Nada acontece"],1,"Arts. 48 e 49: indivisibilidade."],
+["m2","Ação privada subsidiária NÃO cabe quando o MP, no prazo:",["Ficou inerte","Propôs ANPP","Perdeu o prazo","Não se manifestou"],1,"Qualquer manifestação oficial afasta a inércia."],
+["m2","Ação penal privada personalíssima:",["Admite sucessão pelo CADI","Admite representante legal","Prazo conta do trânsito em julgado da anulação do casamento","Aplica-se aos crimes contra a honra"],2,"Art. 236, parágrafo único, CP."],
+["m3","Crime tentado: competência territorial pela teoria:",["Do resultado","Da ação (último ato de execução)","Da ubiquidade","Do domicílio"],1,"Art. 70, caput, parte final."],
+["m3","Estelionato por transferência bancária, vítima única:",["Local da conta do golpista","Domicílio da vítima","Domicílio do réu","Prevenção"],1,"Art. 70, §4º."],
+["m3","Autoridade com foro só na Constituição Estadual comete homicídio doloso:",["Julgada no TJ","Julgada no Júri","Julgada no STJ","Julgada no TRF"],1,"SV 45."],
+["m3","Deputado Federal comete crime de violência doméstica durante o mandato:",["STF","STJ","1ª instância","TJ"],2,"Falta o requisito temático (AP 937)."],
+["m3","Crime em voo nacional com escala antes do destino:",["Local de partida","Destino final","1º pouso após o delito","Domicílio da vítima"],2,"Viagem nacional: 1º local de pouso após o delito."],
+["m3","Brasileiro que nunca residiu no Brasil comete crime no exterior:",["Capital do estado de nascimento","Brasília","Rio de Janeiro","Local de entrada no país"],1,"Art. 88, CPP."],
+["m4","Pessoas sem acordo saqueiam lojas diferentes durante um blecaute:",["Conexão concursal","Conexão por simultaneidade","Continência subjetiva","Conexão instrumental"],1,"Mesmo tempo e lugar, sem acordo."],
+["m4","Homicídio da testemunha para garantir a impunidade de um roubo:",["Conexão lógica","Conexão por reciprocidade","Continência objetiva","Conexão instrumental"],0,"Art. 76, II."],
+["m4","Concurso entre jurisdição comum e militar:",["Prevalece a militar","Prevalece a comum","Separação obrigatória","Prevenção"],2,"Art. 79, I; Súm. 90/STJ."],
+["m4","Dois furtos em Itabuna e um em Ilhéus (mesma gravidade):",["Ilhéus","Itabuna","Prevenção","Salvador"],1,"Maior número de infrações (art. 78, II, b)."],
+["m4","O juízo prevalente absolve no crime que atraiu os demais:",["Remete os conexos a outro juízo","Continua competente (perpetuação)","Anula o processo","Remete ao tribunal"],1,"Art. 81."]
+];
+
+const CASES = [
+["m1","Laura é investigada por fraude. Seu advogado pede ao delegado acesso aos depoimentos já colhidos e às informações de uma busca e apreensão que ainda será cumprida. O delegado nega tudo, dizendo que o IP é sigiloso. Analise.","O acesso é retrospectivo: alcança os depoimentos já documentados (art. 7º, XIV, Lei 8.906/94 e SV 14), mas não a busca ainda não cumprida (art. 7º, §11). Negar o que já está documentado é irregular e gera responsabilidade civil, penal e disciplinar. Medidas: petição ao juiz das garantias ou mandado de segurança. O IP não constará da certidão de antecedentes (art. 20, parágrafo único)."],
+["m1","O delegado recebe carta anônima dizendo que um comerciante vende drogas e, no mesmo dia, sem verificação, baixa portaria e indicia o comerciante sem descrever indícios. Analise.","Diante de notícia apócrifa, o STF exige verificação prévia da plausibilidade (VPI) antes da portaria. O indiciamento exige ato fundamentado com análise técnico-jurídica de autoria, materialidade e circunstâncias (art. 2º, §6º, Lei 12.830/13). Os dois atos foram irregulares."],
+["m1","Concluído o IP, o delegado envia os autos direto ao promotor com base em lei estadual. O promotor pede uma perícia imprescindível e o juiz indefere. Analise.","O STF declarou inconstitucionais leis estaduais de tramitação direta: os autos vão ao juiz (das garantias), que abre vista ao MP (art. 23). O MP pode requerer diligências imprescindíveis (art. 16) e o juiz não deve indeferir; se indeferir, cabe correição parcial."],
+["m2","Rita soube quem era o autor em 10/03/2026, representou em 05/09/2026 contra um dos dois autores, retratou-se em 15/09 e quis representar de novo em 10/10/2026. Analise a validade e se o MP pode denunciar o segundo autor.","O prazo terminou em 09/09/2026 (art. 10, CP). A retratação da retratação é admitida, mas só dentro do prazo; em 10/10 já houve decadência. Pela eficácia objetiva o MP poderia, em tese, denunciar o segundo autor, mas sem representação válida não há condição de procedibilidade para nenhum dos dois."],
+["m2","Uma vítima de crime contra a honra praticado por dois autores processa só um, por ter se reconciliado com o outro. Depois, deixa o processo parado por 40 dias e falta à audiência sem justificativa. Analise.","A omissão voluntária é renúncia tácita, que se estende a todos (arts. 48 e 49): extinção da punibilidade de ambos. Mesmo que o processo seguisse, 30 dias sem andamento e a falta injustificada a ato processual configuram perempção (art. 60, I e III)."],
+["m2","Num roubo com investigado solto, o MP fica 30 dias sem se manifestar e a vítima ajuíza queixa subsidiária. Em outro caso, o MP propôs ANPP no 10º dia e a vítima também ajuizou. Analise.","Cabe só no primeiro caso: o prazo do MP era de 15 dias (art. 46) e houve inércia. No segundo, a proposta de ANPP é manifestação oficial. A vítima tem 6 meses a contar do fim do prazo do MP (art. 38). O MP atua como interveniente adesivo obrigatório (art. 564, III, d) com os poderes do art. 29; fundamento: art. 5º, LIX, CF."],
+["m3","Paulo, em Salvador, envia veneno a um desafeto em Lisboa, que morre. Leandro, em Assunção, aplica golpe que se consuma em Ilhéus. Ana tenta matar Pedro em Camaçari; ele foge ferido para Salvador e sobrevive. Indique os juízos competentes.","Paulo e Leandro: crimes à distância, teoria da ubiquidade (art. 70, §§1º e 2º) — Salvador (onde ocorreu a ação) e Ilhéus (onde se deu o resultado). Ana: crime tentado, teoria da ação — Camaçari, local do último ato de execução."],
+["m3","Um Governador pratica crime eleitoral. Um Prefeito pratica crime comum ligado ao cargo em outro estado. Um Secretário de Estado com foro só na CE comete homicídio doloso ligado à função. Indique os órgãos competentes.","Governador: STJ (a atração pelo TRE não alcança STF e STJ). Prefeito: TJ do seu estado (art. 29, X), porque o foro prevalece sobre o local do crime. Secretário: Tribunal do Júri (SV 45)."],
+["m3","Um Deputado Federal recebe propina no mandato, com ajuda de um assessor sem foro, e mata o vizinho numa briga por barulho. Depois o mandato acaba. Analise.","Propina: STF (requisitos temporal e temático presentes — AP 937); o STF atual mantém o foro em crimes funcionais mesmo após o fim do mandato. Homicídio por motivo pessoal: falta o requisito temático, vai ao Júri de 1º grau. O assessor pode ser atraído ao STF (Súm. 704; art. 78, III), mas o desmembramento é facultativo (art. 80) e hoje é a regra."],
+["m4","Três pessoas combinam um furto; na fuga uma delas mata o vigia para não ser identificada; uma participante tem 17 anos; o Júri desclassifica o homicídio. Analise.","Conexão lógica (art. 76, II); o Júri prevalece e atrai o furto (art. 78, I). A adolescente vai ao juízo da infância (separação obrigatória, art. 79, II). Pela perpetuação (art. 81), o juízo prevalente continua competente; no Júri, se a desclassificação ocorre em plenário, julga o juiz-presidente; se na pronúncia, remete ao juízo competente (art. 81, parágrafo único)."],
+["m4","Há crimes conexos da Justiça estadual em comarcas diferentes: (1) roubo em Salvador e furto em Feira de Santana; (2) dois furtos em Itabuna e um em Ilhéus; (3) um furto em Camaçari e um em Lauro de Freitas, com denúncia recebida primeiro em Lauro. Indique o competente.","Art. 78, II: (1) Salvador — pena mais grave; (2) Itabuna — maior número de infrações; (3) Lauro de Freitas — prevenção."]
+];
+
+</script>
+<script>
+const MODS=[];const tpl=document.getElementById('content').content;
+const store={get(k,d){try{const v=localStorage.getItem('mc_pp1_'+k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem('mc_pp1_'+k,JSON.stringify(v))}catch(e){}}};
+let done=store.get('done',{}),known=store.get('known',{}),qans=store.get('qans',{});
+const DESC={m0:"Função, persecução, lei no espaço e no tempo, sistemas, juiz das garantias",m1:"Características, valor probatório, prazos, procedimento, arquivamento, indiciamento",m2:"Pública (incondicionada e condicionada) e privada: princípios e modalidades",m3:"Matéria, lugar, pessoa: foro por prerrogativa e tabela dos tribunais",m4:"Conexão, continência, foro prevalente, separação e perpetuação"};
+const NAMES={m0:"Fundamentos",m1:"Inquérito",m2:"Ação Penal",m3:"Competência",m4:"Conexão"};
+
+function linkify(html){return html.replace(/\[\[(\w+)\|([^\]]+)\]\]/g,(m,id,t)=>LAWS[id]?`<a class="lei" href="#" data-l="${id}">${t}</a>`:t)}
+tpl.querySelectorAll('article.mod').forEach(a=>{
+ const subs=[...a.querySelectorAll('h3[id]')].map(h=>({id:h.id,t:h.textContent.replace(/\[\[\w+\|([^\]]+)\]\]/g,'$1')}));
+ MODS.push({id:a.id,title:a.dataset.title,short:a.dataset.short,html:linkify(a.innerHTML),subs});
+});
+function wrapTables(root){root.querySelectorAll('table').forEach(t=>{if(t.parentElement.classList.contains('tw'))return;const w=document.createElement('div');w.className='tw';t.replaceWith(w);w.appendChild(t)})}
+
+/* abas */
+function go(v){document.querySelectorAll('.view').forEach(s=>s.classList.toggle('on',s.id==='v-'+v));document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.v===v));window.scrollTo({top:0,behavior:'smooth'});store.set('tab',v)}
+document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>go(b.dataset.v));
+
+/* início */
+function renderHome(){
+ document.getElementById('gridmods').innerHTML=MODS.map((m,i)=>`<div class="modcard" onclick="openMod(${i})"><div class="n">0${i+1}</div><h3>${m.title}</h3><p>${DESC[m.id]}</p>${done[m.id]?'<span class="done">✓ estudado</span>':''}</div>`).join('');
+ document.getElementById('st-mod').textContent=Object.keys(done).filter(k=>done[k]).length+'/'+MODS.length;
+ document.getElementById('st-fc').textContent=Object.values(known).filter(x=>x).length+'/'+CARDS.length;
+ const a=Object.values(qans);document.getElementById('st-q').textContent=a.length?Math.round(100*a.filter(x=>x).length/a.length)+'%':'—';
+ document.getElementById('st-l').textContent=Object.keys(LAWS).length;
+}
+
+/* matéria */
+let cur=store.get('mod',0);
+function renderSide(){document.getElementById('side').innerHTML='<h4>Módulos</h4>'+MODS.map((m,i)=>`<button class="m ${i===cur?'on':''}" onclick="openMod(${i})">${done[m.id]?'✓ ':''}${i+1}. ${m.short}</button>${i===cur?'<div class="subs">'+m.subs.map(s=>`<a href="#${s.id}" onclick="document.getElementById('${s.id}').scrollIntoView({behavior:'smooth'});return false">${s.t}</a>`).join('')+'</div>':''}`).join('')}
+function openMod(i){cur=i;store.set('mod',i);const p=document.getElementById('paper');p.innerHTML=MODS[i].html;wrapTables(p);renderSide();
+ document.getElementById('prev').disabled=i===0;document.getElementById('next').disabled=i===MODS.length-1;
+ const mk=document.getElementById('mark');mk.textContent=done[MODS[i].id]?'✓ Estudado (desmarcar)':'✓ Marcar como estudado';mk.classList.toggle('ok',!!done[MODS[i].id]);
+ go('materia')}
+document.getElementById('prev').onclick=()=>openMod(cur-1);document.getElementById('next').onclick=()=>openMod(cur+1);
+document.getElementById('mark').onclick=()=>{const id=MODS[cur].id;done[id]=!done[id];store.set('done',done);openMod(cur);renderHome()};
+
+/* caderno completo */
+function renderCad(){const c=document.getElementById('cad');c.innerHTML=MODS.map(m=>`<div class="mod" id="cad-${m.id}">${m.html.replace(/id="(m\d-\d+)"/g,'id="c-$1"')}</div>`).join('');wrapTables(c);
+ document.getElementById('cadidx').innerHTML=MODS.map(m=>`<a class="mh" href="#cad-${m.id}">${m.title}</a>`+m.subs.map(s=>`<a href="#c-${s.id}">${s.t}</a>`).join('')).join('')}
+
+/* leis */
+let lawG='Todos';
+function renderLaws(){const q=document.getElementById('lawq').value.toLowerCase();const gs=['Todos',...new Set(Object.values(LAWS).map(l=>l.g))];
+ document.getElementById('lawchips').innerHTML=gs.map(g=>`<button class="chip ${g===lawG?'on':''}" onclick="lawG='${g}';renderLaws()">${g}</button>`).join('');
+ document.getElementById('lawlist').innerHTML=Object.entries(LAWS).filter(([k,l])=>(lawG==='Todos'||l.g===lawG)&&(l.t+' '+l.x).toLowerCase().includes(q)).map(([k,l])=>`<details class="law" ${q?'open':''}><summary>${l.t}<span>${l.g}</span></summary><div class="tx">${l.x}${l.n?`<div class="nota"><b>Nota:</b> ${l.n}</div>`:''}</div></details>`).join('')||'<p>Nada encontrado.</p>'}
+document.getElementById('lawq').oninput=renderLaws;
+
+/* modal */
+document.addEventListener('click',e=>{const a=e.target.closest('a.lei[data-l]');if(!a)return;e.preventDefault();const l=LAWS[a.dataset.l];document.getElementById('mt').textContent=l.t;document.getElementById('mx').innerHTML=l.x+(l.n?`<div class="nota"><b>Nota:</b> ${l.n}</div>`:'');document.getElementById('modal').classList.add('on')});
+function closeM(){document.getElementById('modal').classList.remove('on')}
+document.getElementById('modal').onclick=e=>{if(e.target.id==='modal')closeM()};
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
+
+/* flashcards */
+let fcF='all',deck=[],fi=0;
+function buildDeck(){deck=CARDS.map((c,i)=>({c,i})).filter(x=>fcF==='all'||(fcF==='rev'?!known[x.i]:x.c[0]===fcF));fi=0;showCard()}
+function showCard(){const card=document.getElementById('card');card.classList.remove('flip');
+ document.getElementById('fcf').innerHTML=[['all','Todos'],...MODS.map(m=>[m.id,NAMES[m.id]]),['rev','Só os que não sei']].map(([k,t])=>`<button class="chip ${fcF===k?'on':''}" onclick="fcF='${k}';buildDeck()">${t}</button>`).join('');
+ if(!deck.length){document.getElementById('fcq').textContent='Nenhum cartão aqui. Você dominou tudo! ✿';document.getElementById('fca').textContent='';document.getElementById('fct').textContent='';document.getElementById('fcn').textContent='';return}
+ const {c,i}=deck[fi];setTimeout(()=>{document.getElementById('fcq').textContent=c[1];document.getElementById('fca').textContent=c[2]},150);
+ document.getElementById('fct').textContent=NAMES[c[0]].toUpperCase()+(known[i]?' · ✓ JÁ SEI':'');
+ document.getElementById('fcn').textContent=`Cartão ${fi+1} de ${deck.length} · dominados: ${Object.values(known).filter(x=>x).length}/${CARDS.length}`}
+document.getElementById('card').onclick=()=>document.getElementById('card').classList.toggle('flip');
+document.getElementById('fcnext').onclick=()=>{if(deck.length){fi=(fi+1)%deck.length;showCard()}};
+document.getElementById('fcprev').onclick=()=>{if(deck.length){fi=(fi-1+deck.length)%deck.length;showCard()}};
+function mark(v){if(!deck.length)return;known[deck[fi].i]=v;store.set('known',known);renderHome();if(fcF==='rev'&&v){deck.splice(fi,1);if(fi>=deck.length)fi=0;showCard()}else{fi=(fi+1)%deck.length;showCard()}}
+document.getElementById('fcyes').onclick=()=>mark(true);document.getElementById('fcno').onclick=()=>mark(false);
+document.getElementById('fcshuf').onclick=()=>{for(let i=deck.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[deck[i],deck[j]]=[deck[j],deck[i]]}fi=0;showCard()};
+
+/* questões */
+let qF='all',qMode='obj';
+function renderQF(){document.getElementById('qf').innerHTML=[['all','Todos os módulos'],...MODS.map(m=>[m.id,NAMES[m.id]])].map(([k,t])=>`<button class="chip ${qF===k?'on':''}" onclick="qF='${k}';renderQ()">${t}</button>`).join('')}
+function renderQ(){renderQF();
+ const L=MCQ.map((q,i)=>({q,i})).filter(x=>qF==='all'||x.q[0]===qF);
+ document.getElementById('qlist').innerHTML=L.map(({q,i},n)=>{const a=qans['q'+i];return `<div class="q" id="q${i}"><div class="qh">QUESTÃO ${n+1} · ${NAMES[q[0]].toUpperCase()}</div><p class="en">${q[1]}</p>${q[2].map((o,j)=>`<button class="opt" data-i="${i}" data-j="${j}">${'abcd'[j]}) ${o}</button>`).join('')}<div class="fb"></div></div>`}).join('');
+ L.forEach(({q,i})=>{if(qans['p'+i]!==undefined)answer(i,qans['p'+i],true)});
+ const D=CASES.map((c,i)=>({c,i})).filter(x=>qF==='all'||x.c[0]===qF);
+ document.getElementById('qdisc').innerHTML=D.map(({c,i},n)=>`<div class="q"><div class="qh">CASO ${n+1} · ${NAMES[c[0]].toUpperCase()}</div><p class="en">${c[1]}</p><textarea placeholder="Escreva sua resposta fundamentada aqui…" data-k="d${i}">${store.get('d'+i,'')}</textarea><button class="btn sec" style="margin-top:8px" onclick="this.nextElementSibling.classList.toggle('on')">Ver resposta-modelo</button><div class="gab"><b>Resposta-modelo:</b> ${c[2]}</div></div>`).join('');
+ document.querySelectorAll('#qdisc textarea').forEach(t=>t.oninput=()=>store.set(t.dataset.k,t.value));
+ updScore()}
+function answer(i,j,silent){const q=MCQ[i],box=document.getElementById('q'+i);if(!box)return;box.querySelectorAll('.opt').forEach((b,k)=>{b.disabled=true;if(k===q[3])b.classList.add('cert');else if(k===j)b.classList.add('err')});
+ const fb=box.querySelector('.fb');fb.innerHTML=(j===q[3]?'<b style="color:var(--verde)">Acertou! ✿</b> ':'<b style="color:var(--verm)">Não foi dessa vez.</b> ')+q[4];fb.classList.add('on');
+ if(!silent){qans['q'+i]=j===q[3];qans['p'+i]=j;store.set('qans',qans);updScore();renderHome()}}
+function updScore(){const ids=MCQ.map((q,i)=>i).filter(i=>qF==='all'||MCQ[i][0]===qF);const r=ids.filter(i=>qans['q'+i]!==undefined);const c=r.filter(i=>qans['q'+i]);document.getElementById('score').textContent=`${r.length} de ${ids.length} respondidas · ${c.length} acertos`}
+document.getElementById('qlist').addEventListener('click',e=>{const b=e.target.closest('.opt');if(b&&!b.disabled)answer(+b.dataset.i,+b.dataset.j)});
+document.getElementById('qreset').onclick=()=>{Object.keys(qans).forEach(k=>{const i=+k.slice(1);if(qF==='all'||MCQ[i][0]===qF)delete qans[k]});store.set('qans',qans);renderQ();renderHome()};
+document.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>{qMode=b.dataset.q;document.querySelectorAll('[data-q]').forEach(x=>x.classList.toggle('on',x===b));document.getElementById('qobj').style.display=qMode==='obj'?'':'none';document.getElementById('qdisc').style.display=qMode==='disc'?'':'none'});
+
+/* start */
+// fix count of qans stats: only q* keys
+const _rh=renderHome;renderHome=function(){_rh();const a=Object.entries(qans).filter(([k])=>k[0]==='q').map(([,v])=>v);document.getElementById('st-q').textContent=a.length?Math.round(100*a.filter(x=>x).length/a.length)+'%':'—'};
+renderHome();renderCad();renderLaws();buildDeck();renderQ();
+{const p=document.getElementById('paper');p.innerHTML=MODS[cur].html;wrapTables(p);renderSide();document.getElementById('prev').disabled=cur===0;document.getElementById('next').disabled=cur===MODS.length-1;const mk=document.getElementById('mark');mk.textContent=done[MODS[cur].id]?'✓ Estudado (desmarcar)':'✓ Marcar como estudado';mk.classList.toggle('ok',!!done[MODS[cur].id])}
+go(store.get('tab','inicio'));
+</script>
+</body>
+</html>
